@@ -4,6 +4,7 @@
  * Prüf-Tool für das Sprachpaket.
  *
  *   bin/check verify                                  Format- und Inhaltsprüfung von de_DE.csv
+ *   bin/check format                                  de_DE.csv sortieren und einheitlich maskieren
  *   bin/check missing  <magento-root> [--phrases=F]   Core-Phrasen ohne Übersetzung
  *   bin/check obsolete <magento-root> [--phrases=F]   Einträge, die Magento nicht (mehr) übersetzt
  *
@@ -81,6 +82,8 @@ function main(array $argv): int
     switch ($cmd) {
         case 'verify':
             return verify();
+        case 'format':
+            return format();
         case 'missing':
         case 'obsolete':
             if (!isset($args[0]) || !is_file($args[0] . '/bin/magento')) {
@@ -91,7 +94,7 @@ function main(array $argv): int
             $phrases = loadCorePhrases($root, $opts['phrases'] ?? null);
             return $cmd === 'missing' ? missing($root, $phrases) : obsolete($root, $phrases);
         default:
-            fwrite(STDERR, "Verwendung: bin/check verify | missing <magento-root> | obsolete <magento-root> [--phrases=DATEI]\n");
+            fwrite(STDERR, "Verwendung: bin/check verify | format | missing <magento-root> | obsolete <magento-root> [--phrases=DATEI]\n");
             return 2;
     }
 }
@@ -184,9 +187,21 @@ function verify(): int
         }
     }
 
-    // Kanonisches Format: Datei muss so aussehen, wie fputcsv sie schreibt
-    if (writeCsvString($rows) !== file_get_contents(PACK_FILE)) {
-        $err('Format', 'de_DE.csv weicht vom fputcsv-Format ab (mit fgetcsv lesen und fputcsv neu schreiben)');
+    // Kanonisches Format: Schlüssel und Übersetzung immer in Anführungszeichen, Escaping wie fputcsv
+    $content = file_get_contents(PACK_FILE);
+    $canonical = writeCsvString($rows);
+    if ($canonical !== $content) {
+        $actual = explode("\n", $content);
+        $expected = explode("\n", $canonical);
+        $count = 0;
+        foreach ($expected as $i => $line) {
+            if (($actual[$i] ?? null) !== $line && $count++ < 20) {
+                $err('Format', 'Zeile ' . ($i + 1) . ': ' . short($actual[$i] ?? '', 80) . '  (erwartet: ' . short($line, 80) . ')');
+            }
+        }
+        if ($count > 20) {
+            $err('Format', '… und ' . ($count - 20) . ' weitere Zeilen. Mit "bin/check format" korrigieren.');
+        }
     }
 
     report('Fehler', $errors);
@@ -431,14 +446,75 @@ function readCsv(string $file): array
     return $rows;
 }
 
+/**
+ * Schreibt die Zeilen im Format des Pakets: Schlüssel und Übersetzung (Spalte 1 und 2) immer in
+ * Anführungszeichen, die Kontextspalten nur bei Bedarf. Das Escaping entspricht fputcsv mit Escape-Zeichen
+ * Backslash, damit Magentos File\Csv die Datei unverändert liest.
+ */
 function writeCsvString(array $rows): string
 {
-    $h = fopen('php://memory', 'w+');
+    $out = '';
     foreach ($rows as $r) {
-        fputcsv($h, $r, ',', '"', '\\');
+        $fields = [];
+        foreach (array_values($r) as $i => $field) {
+            $fields[] = csvField((string) $field, $i < 2);
+        }
+        $out .= implode(',', $fields) . "\n";
     }
+    return $out;
+}
+
+function csvField(string $s, bool $forceQuote): string
+{
+    if (!$forceQuote && strpbrk($s, ",\"\\\n\r\t ") === false) {
+        return $s;
+    }
+    // Wie php_fputcsv: Anführungszeichen verdoppeln, außer direkt nach einem Backslash
+    $q = '"';
+    $escaped = false;
+    $len = strlen($s);
+    for ($i = 0; $i < $len; $i++) {
+        $ch = $s[$i];
+        if ($ch === '\\') {
+            $escaped = true;
+        } elseif (!$escaped && $ch === '"') {
+            $q .= '"';
+        } else {
+            $escaped = false;
+        }
+        $q .= $ch;
+    }
+    return $q . '"';
+}
+
+/** Bringt de_DE.csv in das kanonische Format: sortiert und mit einheitlicher Maskierung */
+function format(): int
+{
+    $rows = readCsv(PACK_FILE);
+    usort($rows, fn($a, $b) => compareKeys($a[0], $b[0]));
+    $new = writeCsvString($rows);
+    if (readCsvString($new) !== $rows) {
+        fwrite(STDERR, "Abbruch: Neu geschriebene Datei würde anders gelesen als das Original.\n");
+        return 1;
+    }
+    $changed = $new !== file_get_contents(PACK_FILE);
+    file_put_contents(PACK_FILE, $new);
+    echo $changed ? "de_DE.csv neu formatiert\n" : "de_DE.csv war bereits im richtigen Format\n";
+    return 0;
+}
+
+function readCsvString(string $content): array
+{
+    $h = fopen('php://memory', 'w+');
+    fwrite($h, $content);
     rewind($h);
-    return stream_get_contents($h);
+    $rows = [];
+    while (($d = fgetcsv($h, null, ',', '"', '\\')) !== false) {
+        if ($d !== [null]) {
+            $rows[] = $d;
+        }
+    }
+    return $rows;
 }
 
 function compareKeys(string $a, string $b): int

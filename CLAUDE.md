@@ -33,9 +33,11 @@ Do not include:
 ```
 
 - When loading a language pack, Magento only evaluates the first two columns (`Dictionary::readPackCsv`). Columns 3 and 4 are for orientation only and do not restrict anything to a module. Rows without a module have only two columns.
-- Always write the file with PHP's `fputcsv($fh, $row, ',', '"', '\\')` and read it with `fgetcsv(…, ',', '"', '\\')`. This is the same escaping that Magento's `File\Csv` uses. Quotes are doubled (`""`). A backslash before a quote (`..\"`) is preserved.
+- **The English key and the translation (columns 1 and 2) are always enclosed in double quotes `"…"`**, even when no character requires it: `"Sample","Muster",module,Magento_Downloadable`, never `Sample,Muster,module,Magento_Downloadable`. Columns 3 and 4 are only quoted when needed.
+- Read the file with `fgetcsv(…, ',', '"', '\\')`, the same escaping that Magento's `File\Csv` uses. Inside quotes, quotes are doubled (`""`); a backslash before a quote (`..\"`) is preserved.
+- Write the file only with `bin/check format`. PHP's `fputcsv` cannot force quotes, so writing with `fputcsv` alone breaks the quoting rule. `format` sorts the rows, writes columns 1 and 2 quoted with exactly the escaping of `fputcsv`, and aborts if the result would be read differently than before.
 - Sort order: alphabetical by English text, case-insensitive (`strcasecmp`), ties broken with `strcmp`.
-- Never restructure the CSV by hand with `sed` or regex. Always parse and rewrite it. Afterwards verify that the row count equals the key count (see "Verification").
+- Never restructure the CSV by hand with `sed` or regex. Always parse and rewrite it, then run `bin/check format` and `bin/check verify`.
 
 ## Rules for the English key (column 1)
 
@@ -181,7 +183,8 @@ When in doubt, read the surrounding code and check whether the string reaches `_
 
 `bin/check` is a dependency-free PHP script. It implements the rules of this file; when a rule changes here, change the tool too.
 
-- `bin/check verify`: format and content checks of `de_DE.csv`. Exits with 1 on errors (column count, duplicates, sort order, canonical `fputcsv` format, placeholders, identical entries, line breaks, extra `*.csv` files). Warnings do not fail: changed HTML tags, formal address, changed brand names, junk keys, case-only changes, case variants with different translations. Review every warning.
+- `bin/check format`: sorts `de_DE.csv` and writes it in the canonical format (columns 1 and 2 always quoted). Run it after every change to the file.
+- `bin/check verify`: format and content checks of `de_DE.csv`. Exits with 1 on errors (column count, duplicates, sort order, canonical format including quoted columns 1 and 2, placeholders, identical entries, line breaks, extra `*.csv` files). Warnings do not fail: changed HTML tags, formal address, changed brand names, junk keys, case-only changes, case variants with different translations. Review every warning.
 - `bin/check missing <magento-root> [--phrases=FILE]`: core phrases without an entry, pre-sorted by reason. Only "Junk" and "Own module translation" are reliable; every other group must be reviewed phrase by phrase.
 - `bin/check obsolete <magento-root> [--phrases=FILE]`: entries confirmed neither by `collect-phrases` nor by `en_US.csv`. Literal hits are classified by the rules under "Literal occurrences". "Manuell prüfen" needs a human decision; "Veraltet" entries can be removed after a quick look.
 

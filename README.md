@@ -23,7 +23,13 @@ php bin/magento cache:clean
 
 ## Format
 
-`de_DE.csv` enthält pro Zeile den englischen Originaltext und die deutsche Übersetzung. Die optionalen Spalten 3 und 4 (`module,Magento_X`) dienen nur der Orientierung, Magento wertet beim Laden eines Sprachpakets ausschließlich die ersten beiden Spalten aus.
+`de_DE.csv` enthält pro Zeile den englischen Originaltext und die deutsche Übersetzung. Beide stehen immer in doppelten Anführungszeichen:
+
+```
+"Sample","Muster",module,Magento_Downloadable
+```
+
+Die optionalen Spalten 3 und 4 (`module,Magento_X`) dienen nur der Orientierung, Magento wertet beim Laden eines Sprachpakets ausschließlich die ersten beiden Spalten aus. Nach jeder Änderung `php bin/check format` ausführen. Der Befehl sortiert die Datei und setzt die Anführungszeichen einheitlich.
 
 Mehrzeilige Originaltexte (z. B. aus `system.xml` oder UI-Components) müssen inklusive Zeilenumbrüchen und Einrückung exakt so bleiben, wie Magento sie liest, sonst greift die Übersetzung nicht.
 
@@ -32,6 +38,9 @@ Mehrzeilige Originaltexte (z. B. aus `system.xml` oder UI-Components) müssen in
 Das Repository enthält mit `bin/check` ein Prüf-Tool (PHP 8.1+, ohne Abhängigkeiten). Es wird nicht mit dem Composer-Paket ausgeliefert.
 
 ```bash
+# de_DE.csv sortieren und einheitlich formatieren (Spalte 1 und 2 immer in Anführungszeichen)
+php bin/check format
+
 # Format und Inhalt von de_DE.csv prüfen (läuft auch als GitHub Action bei jedem Push)
 php bin/check verify
 
