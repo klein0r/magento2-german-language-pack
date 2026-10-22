@@ -27,6 +27,27 @@ php bin/magento cache:clean
 
 Mehrzeilige Originaltexte (z. B. aus `system.xml` oder UI-Components) müssen inklusive Zeilenumbrüchen und Einrückung exakt so bleiben, wie Magento sie liest, sonst greift die Übersetzung nicht.
 
+## Prüfen und pflegen
+
+Das Repository enthält mit `bin/check` ein Prüf-Tool (PHP 8.1+, ohne Abhängigkeiten). Es wird nicht mit dem Composer-Paket ausgeliefert.
+
+```bash
+# Format und Inhalt von de_DE.csv prüfen (läuft auch als GitHub Action bei jedem Push)
+php bin/check verify
+
+# Core-Phrasen einer Magento-Installation finden, die im Paket fehlen
+php bin/check missing /pfad/zu/magento
+
+# Einträge finden, die Magento nicht mehr übersetzt
+php bin/check obsolete /pfad/zu/magento
+```
+
+`missing` und `obsolete` rufen `bin/magento i18n:collect-phrases` selbst auf, das dauert etwa eine Minute. Mit `--phrases=DATEI` lässt sich eine bereits erzeugte Ausgabe wiederverwenden.
+
+`verify` meldet Fehler und Warnungen und schlägt nur bei Fehlern fehl:
+- **Fehler:** Spaltenzahl, doppelte Schlüssel, Sortierung, Format, Platzhalter, identische Einträge, Zeilenumbrüche, zusätzliche CSV-Dateien
+- **Warnungen:** veränderte HTML-Tags, Sie-Form, veränderte Markennamen, Junk-Schlüssel und uneinheitlich übersetzte Schreibvarianten. Sie sind Hinweise zur Durchsicht.
+
 ## Welche Texte enthalten sind
 
 Das Paket enthält nur Texte, die Magento tatsächlich übersetzt. Für jeden Eintrag muss mindestens eine dieser Quellen ihn belegen:

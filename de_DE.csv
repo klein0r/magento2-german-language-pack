@@ -176,7 +176,7 @@
 """%field"" is required","""%field"" ist erforderlich",module,Magento_Catalog
 """%field"" must be an array","""%field"" muss ein Array sein",module,Magento_Catalog
 """%field"" must be list of SourceCarrierLinkInterface.","""%field"" muss die Liste der SourceCarrierLinkInterface sein.",module,Magento_InventoryShipping
-"""%field"" should a known status.","""%feld"" sollte einen bekannten Status haben.",module,Magento_Inventory
+"""%field"" should a known status.","""%field"" sollte ein bekannter Status sein.",module,Magento_Inventory
 """%field"" should be greater then 0.","""%field"" sollte größer als 0 sein.",module,Magento_Inventory
 """%field"" should be numeric.","""%field"" sollte numerisch sein.",module,Magento_Inventory
 """%field"" value is required to create an attribute","Der Wert ""%field"" ist erforderlich, um ein Attribut anzulegen",module,Magento_Customer
@@ -448,11 +448,11 @@
 "<strong>%1 items</strong> were found using the following search criteria","<strong>%1 Artikel</strong> wurden mit den folgenden Suchkriterien gefunden",module,Magento_CatalogSearch
 "<strong>Attention</strong>: Captcha is case sensitive.","<strong> Achtung </strong>: Groß- und Kleinschreibung beachten!",module,Magento_Captcha
 "<strong>Buyer Country</strong> field value will only be used in Sandbox Environment to simulate the buyer experience at front-end.","Der Wert im Feld <strong>Land des Käufers</strong> wird nur in der Sandbox-Umgebung verwendet, um das Käufererlebnis im Frontend zu simulieren.",module,Magento_PaymentServicesBase
-"<strong>Get more insights from Magento Business Intelligence</strong>","<Erhalte mehr Einblicke mit Magento Business Intelligence</strong>.",module,Magento_Analytics
+"<strong>Get more insights from Magento Business Intelligence</strong>","<strong>Erhalte mehr Einblicke mit Magento Business Intelligence</strong>",module,Magento_Analytics
 "[ deleted ]","[ gelöscht ]",module,Magento_Backend
 "[ID: %value] %message","ID: %value] %message",module,Magento_InventoryAdminUi
 "[ID: %value] The Source does not exist.","ID: %value] Die Quelle existiert nicht.",module,Magento_InventoryAdminUi
-"[ID: %value] The Stock does not exist.","ID: %wert] Die Aktie existiert nicht.",module,Magento_InventoryAdminUi
+"[ID: %value] The Stock does not exist.","[ID: %value] Das Lager existiert nicht.",module,Magento_InventoryAdminUi
 "`%1` and `%2` can't be used at the same time.","`%1` und `%2` können nicht gleichzeitig verwendet werden.",module,Magento_CatalogGraphQl
 "`%1` and `%2` can't be used for CustomizableOptionInput object at the same time.","`%1` und `%2` können für das Objekt CustomizableOptionInput nicht gleichzeitig verwendet werden.",module,Magento_QuoteGraphQl
 "A ""%1"" attribute set name already exists. Create a new name and try again.","Ein ""%1"" Attributsetname existiert bereits. Erstelle einen neuen Namen und versuche es erneut.",module,Magento_Eav
@@ -1279,7 +1279,7 @@ Authorize,Autorisieren,module,Magento_PaymentServicesPaypal
 "Authorize and Capture","Autorisieren und erfassen",module,Magento_PaymentServicesPaypal
 "Authorized amount of %1","Autorisierter Betrag von %1",module,Magento_Sales
 "Authorized amount of %1.","Autorisierter Betrag von %1."
-"Authorized amount of %1. Order is suspended as its authorizing amount %1 is suspected to be fraudulent.","Autorisierter Betrag von %1 %1. Die Bestellung wurde aufgehoben, weil der autorisierte Betrag %1 als betrügerisch verdächtigt wird."
+"Authorized amount of %1. Order is suspended as its authorizing amount %1 is suspected to be fraudulent.","Autorisierter Betrag von %1. Die Bestellung wurde angehalten, da der autorisierte Betrag %1 als betrügerisch eingestuft wird."
 Auto,Automatisch,module,Magento_Paypal
 "Auto Generated Specific Coupon Codes","Automatisch generierte Gutscheincodes",module,Magento_SalesRule
 "Auto Parts",Autoteile,module,Magento_Analytics
@@ -1702,7 +1702,7 @@ Carrier:,Beförderer:,module,Magento_Shipping
 Cart,Warenkorb,module,PayPal_Braintree
 "Cart %1 does not contain item %2","Warenkorb %1 enthält Artikel %2 nicht"
 "Cart %1 doesn't contain item  %2","Warenkorb %1 enthält nicht den Artikel %2"
-"Cart %1 doesn't contain products","Einkaufswagen 1% enthält keine Produkte"
+"Cart %1 doesn't contain products","Der Warenkorb %1 enthält keine Produkte"
 "Cart Attribute",Warenkorb-Attribut,module,Magento_SalesRule
 "Cart contains virtual product(s) only. Shipping address is not applicable.","Warenkorb enthält nur virtuelle Produkte. Versandadresse ist nicht anwendbar."
 "Cart contains virtual product(s) only. Shipping method is not applicable.","Warenkorb enthält nur virtuelle Produkte. Versandmethode ist nicht anwendbar."
@@ -2133,7 +2133,7 @@ Cost,Einkaufspreis
 "Could not delete customer group with its excluded websites.","Die Kundengruppe mit ausgeschlossenen Webseiten konnte nicht gelöscht werden.",module,Magento_Customer
 "Could not delete directories: %paths","Die Verzeichnisse konnten nicht gelöscht werden: %paths",module,Magento_MediaGallery
 "Could not delete ims tokens for admin user id %1.","Die IMS-Token für die Admin-Benutzer-ID %1 konnten nicht gelöscht werden.",module,Magento_AdminAdobeIms
-"Could not delete media asset with path %path: %error","Konnte Mediendatei mit Pfad %pfad nicht löschen: %error",module,Magento_MediaGallery
+"Could not delete media asset with path %path: %error","Das Medien-Asset mit dem Pfad %path konnte nicht gelöscht werden: %error",module,Magento_MediaGallery
 "Could not delete media assets by path %path: %error","Die Medien-Assets unter dem Pfad %path konnten nicht gelöscht werden: %error",module,Magento_MediaGallery
 "Could not delete media assets by paths: %paths","Die Medien-Assets unter den Pfaden %paths konnten nicht gelöscht werden",module,Magento_MediaGallery
 "Could not delete obsolete asset keyword links","Veraltete Schlüsselwort-Verknüpfungen des Assets konnten nicht gelöscht werden",module,Magento_MediaGallery
@@ -2733,7 +2733,7 @@ Delete,Löschen,module,Magento_Backend
 "Delete video","Video löschen",module,Magento_ProductVideo
 "Delete Web Site","Website löschen",module,Magento_Backend
 "Deleted Stores","Gelöschte Shops",module,Magento_Customer
-"Deleting a %1 will not delete the information associated with the %1 (e.g. categories, products, etc.), but the %1 will not be able to be restored. It is suggested that you create a database backup before deleting the %1.","Durch das Löschen einer  %1 wird die mit der %1 verknüpfte Information nicht gelöscht (Kategorien, Produkte, usw.), aber der %1 ist dann nicht wiederherstellbar. Erstelle daher vorab unbedingt ein Backup.",module,Magento_Backend
+"Deleting a %1 will not delete the information associated with the %1 (e.g. categories, products, etc.), but the %1 will not be able to be restored. It is suggested that you create a database backup before deleting the %1.","Durch das Löschen von %1 werden die mit %1 verknüpften Informationen (z. B. Kategorien, Produkte usw.) nicht gelöscht, aber %1 lässt sich danach nicht wiederherstellen. Erstelle vor dem Löschen von %1 am besten ein Datenbank-Backup.",module,Magento_Backend
 "Deletion failure. Please try again.","Fehler beim Löschen. Bitte versuche es erneut.",module,Magento_PaymentServicesPaypal
 "Delivered on:","Geliefert am:",module,Magento_Shipping
 "Delivery Confirmation",Lieferbestätigung,module,Magento_Ups
@@ -3285,7 +3285,7 @@ error,Fehler,module,Magento_CatalogInventory
 "Error occurred when generating coupons: %1","Bei der Generierung von Gutscheinen ist ein Fehler aufgetreten: %1",module,Magento_SalesRule
 "Error occurred when saving coupon: %1","Beim Speichern des Gutscheins ist ein Fehler aufgetreten: %1",module,Magento_SalesRule
 "Error occurred: %1","Ein Fehler ist aufgetreten: %1",module,Magento_Ups
-"Error processing %key element of input data","Fehlerbehandlung %Schlüsselelement der Eingangsdaten",module,Magento_AsynchronousOperations
+"Error processing %key element of input data","Fehler beim Verarbeiten des Elements %key der Eingabedaten",module,Magento_AsynchronousOperations
 "Error processing payment, please try again later.","Fehler bei der Verarbeitung der Zahlung, bitte versuche es später erneut."
 "Error processing payment. Please try again later.","Fehler bei der Zahlungsverarbeitung. Versuche es bitte später noch einmal."
 "Error processing the transaction. Please try again.","Fehler bei der Verarbeitung der Transaktion. Bitte versuche es erneut.",module,Magento_PaymentServicesPaypal
@@ -3909,7 +3909,6 @@ Identifier,Kennung,module,Magento_Cms
 "If you are a registered VAT customer, please <a href=""%1"">click here</a> to enter your shipping address for proper VAT calculation.","Wenn du ein registrierter MwSt-Kunde bist, <a href=""%1"">klicke bitte hier</a>, um deine Versandadresse für eine korrekte Mehrwertsteuerkalkulation einzugeben.",module,Magento_Customer
 "If you are a registered VAT customer, please click <a href=""%1"">here</a> to enter your billing address for proper VAT calculation.","Wenn du ein registrierter MwSt-Kunde bist, klicke bitte <a href=""%1"">hier</a>, um deine Rechnungsadresse für eine korrekte Mehrwertsteuerkalkulation einzugeben.",module,Magento_Customer
 "If you are a registered VAT customer, please click <a href=""%1"">here</a> to enter your shipping address for proper VAT calculation.","Wenn du ein registrierter MwSt-Kunde bist, klicke bitte <a href=""%1"">hier</a>, um deine Versandadresse für eine korrekte Mehrwertsteuerkalkulation einzugeben.",module,Magento_Customer
-"If you are a registered VAT customer, please click <a href=""%1"">here</a> to enter your shipping address for proper VAT calculation.' 'If you are a registered VAT customer, please click <a href=""%1"">here</a> to enter your billing address for proper VAT calculation.","'Wenn du ein registrierter Steuer-Kunde bist, klicke bitte <a href=%1"">hier</a>",module,Magento_Customer
 "If you are approved for a credit limit with PayPal Credit and use it for future purchases, the APR for those purchases won’t be more than 21.9% and may be even lower.","Wenn dir ein Kreditrahmen bei PayPal Credit gewährt wird und du ihn für zukünftige Einkäufe nutzt, beträgt der effektive Jahreszins für diese Einkäufe höchstens 21,9 % und kann auch niedriger sein.",module,PayPal_Braintree
 "If you believe it is the right one you can ignore this notice.","Wenn du der Meinung bist, das ist richtig, kannst du diese Mitteilung ignorieren.",module,Magento_Checkout
 "If you believe this is an error, please contact us at %1","Wenn du glaubst, dass dies ein Fehler ist, kontaktiere uns bitte unter %1",module,Magento_Customer
@@ -4764,7 +4763,7 @@ message,Nachricht,module,Magento_Catalog
 "Message is added to queue, wait to get your coupons soon.","Die Nachricht wurde zur Warteschlange hinzugefügt, deine Gutscheine werden in Kürze erstellt.",module,Magento_SalesRule
 "Message is added to queue, wait to get your file soon. Make sure your cron job is running to export the file","Nachricht wird in die Warteschlange gestellt, warte, bis du deine Datei bald erhältst. Stelle sicher, dass dein Cron-Job läuft, um die Datei zu exportieren",module,Magento_ImportExport
 "Message Layout",Nachrichten-Layout,module,PayPal_Braintree
-"Message length must not exceed %1 symbols","Nachrichtenlänge darf 1% Symbole nicht überschreiten",module,Magento_Wishlist
+"Message length must not exceed %1 symbols","Die Nachricht darf höchstens %1 Zeichen lang sein",module,Magento_Wishlist
 "Message Text",Nachrichtentext,module,Magento_PageBuilder
 "Message with period.",Zeitraum-Nachricht
 Message.,Nachricht
@@ -5285,7 +5284,7 @@ On,An,module,Magento_Ui
 "Once your package ships we will send an email with a link to track your order.","Sobald dein Paket versandt wurde, werden wir dir eine E-Mail mit einem Link zur Verfolgung deiner Bestellung schicken.",module,Magento_Sales
 "Once your package ships we will send you a tracking number.","Sobald dein Paket versandt wurde, senden wir dir deine Tracking-Nummer zu.",module,Magento_Sales
 One,Eins
-"One or more <a href=""%1"">indexers are invalid</a>. Make sure your <a href=""%2"" target=""_blank"">Magento cron job</a> is running.","Ein oder mehrere <ein href=""%1""> Indizes sind ungültig. Stelle sicher, dass dein <ein href=""%2"" ziel=""_ Formblatt""> Cronjob von Magento  läuft.</ein></ein>",module,Magento_Indexer
+"One or more <a href=""%1"">indexers are invalid</a>. Make sure your <a href=""%2"" target=""_blank"">Magento cron job</a> is running.","Ein oder mehrere <a href=""%1"">Indexer sind ungültig</a>. Stelle sicher, dass dein <a href=""%2"" target=""_blank"">Magento-Cronjob</a> läuft.",module,Magento_Indexer
 "One or more <a href=""%1"">integrations</a> have been reset because of a change to their xml configs.","Eine oder mehrere <a href=""%1"">Integrationen</a> sind wegen einer Änderung zu ihrer XML configs zurückgesetzt worden.",module,Magento_Integration
 "One or more of the Cache Types are invalidated: %1. ","Einer oder mehrere Caches sind ungültig: %1.",module,Magento_AdminNotification
 "One-page checkout is turned off.","Expresskasse ist deaktiviert.",module,Magento_Checkout
@@ -5301,7 +5300,7 @@ One,Eins
 "Only 1 shipping assignment can be set","Es kann nur 1 Versandart ausgewählt werden.",module,Magento_Quote
 "Only fonts available in your theme will be displayed.","Es werden nur Schriftarten angezeigt, die in deinem Theme verfügbar sind.",module,Magento_PaymentServicesPaypal
 "Only implemented for bundle product","Nur für Bündelprodukte implementiert"
-"Only implemented for configurable product: %1","Nur für konfigurierbare Produkte implementiert:"
+"Only implemented for configurable product: %1","Nur für konfigurierbare Produkte implementiert: %1"
 "Only Once (version upgrade)","Nur einmal (Versionsupgrade)",module,Magento_Config
 "Only registered users can write reviews. Please <a href=""%1"">Sign in</a> or <a href=""%2"">create an account</a>","Nur eingetragene Benutzer können Rezensionen schreiben. Bitte <a href=""%1"">einloggen</a> oder <a href=""%2"">erstelle einen Account</a>",module,Magento_Review
 "Only the first 100 errors are shown. ","Nur die ersten 100 Fehler werden gezeigt.",module,Magento_ImportExport
@@ -5549,7 +5548,7 @@ Path,Pfad,module,Magento_Sitemap
 "Path ""%value%"" is not available and cannot be used.","Pfad ""%value%"" ist nicht verfügbar, und kann nicht verwendet werden.",module,Magento_MediaStorage
 "Path ""%value%"" is protected and cannot be used.","Pfad ""%value%"" ist geschützt, und kann nicht verwendet werden.",module,Magento_MediaStorage
 "Path ""%value%"" may not include parent directory traversal (""../"", ""..\").","Der Pfad ""%value%"" darf keinen Verweis auf übergeordnete Verzeichnisse (""../"", ""..\") enthalten.",module,Magento_MediaStorage
-"Pattern: %pattern","Muster: %-Muster"
+"Pattern: %pattern","Muster: %pattern"
 Pause,Pausieren,module,Magento_Newsletter
 Paused,Angehalten,module,Magento_Customer
 Pay,Bezahlen,module,Magento_PaymentServicesPaypal
@@ -8151,7 +8150,7 @@ testMessage,Testnachricht,module,Magento_Theme
 "The linked product SKU is invalid. Verify the data and try again.","Die SKU des verknüpften Produkts ist ungültig. Prüfe die Daten und versuche es erneut.",module,Magento_Catalog
 "The linked products data is invalid. Verify the data and try again.","Die verknüpften Produktdaten sind ungültig. Überprüfe die Daten und versuche es erneut.",module,Magento_Catalog
 "The Magento cache storage has been flushed.","Der Magento-Cache-Speicher wurde geleert.",module,Magento_Backend
-"The maximum allowed image size for '%1' is %2x%3 px.","Die maximal erlaubte Bildgröße für ""%1"" ist %2$3 px.",module,Magento_Catalog
+"The maximum allowed image size for '%1' is %2x%3 px.","Die maximal erlaubte Bildgröße für ""%1"" ist %2x%3 px.",module,Magento_Catalog
 "The maximum number of child authorizations is reached.","Die maximale Anzahl an Child-Berechtigungen ist erreicht.",module,Magento_Paypal
 "The maximum quantity can't be more than %1 when shipping to multiple addresses. Change the quantity and try again.","Die maximale Menge darf bei Versand an mehrere Adressen nicht mehr als %1 betragen. Ändere die Menge und versuche es erneut.",module,Magento_Multishipping
 "The maximum you may purchase is %1.","Das Maximum, das du kaufen kannst, ist %1.",module,lib/web/mage/validation.js
@@ -8270,7 +8269,7 @@ testMessage,Testnachricht,module,Magento_Theme
 "The product quantity should be greater than 0","Die Produktmenge muss größer als 0 sein",module,Magento_Quote
 "The Product stock item is invalid. Verify the stock item and try again.","Der Produkt-Lagerartikel ist ungültig. Überprüfe den Lagerartikel und versuche es erneut.",module,Magento_CatalogInventory
 "The product that was requested doesn't exist. Verify the product and try again.","Das angeforderte Produkt existiert nicht. Überprüfe das Produkt und versuche es erneut.",module,Magento_CatalogGraphQl
-"The product that was requested doesn't exist. Verify the product and try again. Row ID: SKU = %SKU, Store ID: %storeId, Price From: %priceFrom, Price To: %priceTo.","Das angeforderte Produkt existiert nicht. Überprüfe das Produkt und versuche es erneut. Zeilen-ID: SKU = %SKU, Filial-ID: %storeId, Preis von: %preisVon, Preis Bis: %preisBis.",module,Magento_Catalog
+"The product that was requested doesn't exist. Verify the product and try again. Row ID: SKU = %SKU, Store ID: %storeId, Price From: %priceFrom, Price To: %priceTo.","Das angeforderte Produkt existiert nicht. Überprüfe das Produkt und versuche es erneut. Zeilen-ID: SKU = %SKU, Store-ID: %storeId, Preis von: %priceFrom, Preis bis: %priceTo.",module,Magento_Catalog
 "The product type filter specified is incorrect.","Der angegebene Produkttyp-Filter ist falsch.",module,Magento_Reports
 "The product was not found.","Der Artikel wurde nicht gefunden.",module,Magento_ProductAlert
 "The product was unable to be saved. Please try again.","Das Produkt konnte nicht gespeichert werden. Bitte versuche es erneut.",module,Magento_Catalog
@@ -8546,13 +8545,13 @@ testMessage,Testnachricht,module,Magento_Theme
 "There is no address id in setting default shipping address.","Es gibt keine Adress-ID bei der Einstellung der Standard-Lieferadresse.",module,Magento_Customer
 "There is no available Payment Token Adapter for %1","Für %1 ist kein Zahlungstoken-Adapter verfügbar",module,PayPal_Braintree
 "There is no backend type specified for column ""%columnName"".","Für die Spalte ""%columnName"" ist kein Backend-Typ angegeben.",module,Magento_InventoryImportExport
-"There is no command registered for behavior ""%behavior"".","Es ist kein Befehl für das Verhalten ""%Verhalten"" registriert.",module,Magento_InventoryImportExport
+"There is no command registered for behavior ""%behavior"".","Für das Verhalten ""%behavior"" ist kein Befehl registriert.",module,Magento_InventoryImportExport
 "There is no customer with such id.","Es gibt keinen Kunden mit einer solchen ID.",module,Magento_Customer
 "There is no data for the export.","Es gibt keine Daten für den Export.",module,Magento_ImportExport
 "There is no defined renderer for ""%1"" option type.","Es gibt keinen festgelegten Renderer für den ""%1"" Optionstyp",module,Magento_Bundle
 "There is no downloadable link with provided ID.","Es gibt keinen herunterladbaren Link mit der vorgesehen ID."
 "There is no downloadable sample with provided ID.","Es gibt kein herunterladbares Sample mit der angegebenen ID."
-"There is no file: %file","Es gibt keine Datei: %Datei",module,Magento_ImportExport
+"There is no file: %file","Es gibt keine Datei: %file",module,Magento_ImportExport
 "There is no information about associated entity type ""%1"".","Es gibt keine Informationen über den damit verbundenen Entity-Typ ""%1"".",module,Magento_Rule
 "There is no item with provided id in the cart","Es gibt keine Artikel mit der vorgesehenen ID im Warenkorb"
 "There is no item with provided id in the order","Es gibt keinen Artikel mit der vorgesehenen ID in der Bestellung"
@@ -9671,6 +9670,7 @@ WARNING:,WARNUNG:,module,Magento_Directory
 "We were unable to synchronize one or more media files. Please refer to the log file for details.","Eine oder mehrere Mediendateien konnte nicht synchronisiert werden. Details findest du in der Logdatei.",module,Magento_AdminNotification
 "We will authorize %1 after the payment is approved at the payment gateway.","Wir werden %1 autorisieren, nachdem die Zahlung im Payment-Gateway zugelassen wurde."
 "We will disable this feature if the value is empty.","Wir werden diese Funktion deaktivieren, wenn der Wert leer ist.",module,Magento_Integration
+"We will disable this feature if the value is empty. ","Wir werden diese Funktion deaktivieren, wenn der Wert leer ist. "
 "We'll ask for your payment details before you place an order.","Wir werden dich nach deinen Zahlungsdetails fragen, bevor du deine Bestellung aufgibst.",module,Magento_Payment
 "We'll authorize the amount of %1 as soon as the payment gateway approves it.","Wir werden die Menge von %1 genehmigen, sobald das Zahlungs-Gateway dies genehmigt.",module,Magento_Paypal
 "We'll email you a link to reset your password.","Wir haben dir eine Link geschickt, um dein Password neu zu setzen.",module,Magento_User

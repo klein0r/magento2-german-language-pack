@@ -32,5 +32,13 @@
         "files": [
             "registration.php"
         ]
+    },
+    "archive": {
+        "exclude": [
+            "/.github",
+            "/bin",
+            "/.gitattributes",
+            "/CLAUDE.md"
+        ]
     }
 }

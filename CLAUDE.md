@@ -2,12 +2,15 @@
 
 German language pack (`de_DE`) for Magento Open Source 2.4. Composer package `mkleine/magento2-german-language-pack`, Magento language package `mkleine_de_de`. Synced with Magento 2.4.9.
 
-The repository contains no code, only data. Almost every task concerns `de_DE.csv`.
+The repository contains data plus one check tool. Almost every task concerns `de_DE.csv`.
 
 ## Files
 
 - `de_DE.csv`: all translations
 - `language.xml`, `registration.php`, `composer.json`: package metadata, rarely change
+- `bin/check`: check tool (see "Check tool"), excluded from the Composer package
+- `.gitattributes` (`export-ignore`, used by GitHub/Packagist downloads) and `archive.exclude` in `composer.json` (used by `composer archive`, Satis, Private Packagist): both exclude `bin/`, `.github/`, `.gitattributes` and `CLAUDE.md`. Keep the two lists in sync.
+- `.github/workflows/verify.yml`: runs `bin/check verify` on every push and pull request
 - `LICENSE.txt`: OSL-3.0. Required because the package builds on the [splendidinternet package](https://github.com/splendidinternet/Magento2_German_LocalePack_de_DE). Do not remove the license or the attribution notice in the README.
 
 ## Scope: what belongs in `de_DE.csv`
@@ -136,11 +139,12 @@ When a phrase is not clearly covered by reasons 1 to 5, translate it or ask.
 
 1. In a Magento installation of the new version, collect the phrases:
    `php -d memory_limit=-1 bin/magento i18n:collect-phrases -m -o phrases.csv`
+   (`bin/check missing` and `bin/check obsolete` do this automatically, or reuse the file with `--phrases=…`.)
 2. Only consider core contexts: `module` with `Magento_*` or `PayPal_*`, `lib`, and `theme` with `Magento/*`. Filter out custom modules and third-party extensions.
-3. Determine missing keys, i.e. phrases without an entry in `de_DE.csv`. Because identical entries are not kept in the file, this list also contains every phrase that was reviewed earlier and deliberately left in English. Review each phrase individually against "Phrases that stay untranslated"; never dismiss them as a group.
+3. Determine missing keys with `bin/check missing <magento-root>`, i.e. phrases without an entry in `de_DE.csv`. Because identical entries are not kept in the file, this list also contains every phrase that was reviewed earlier and deliberately left in English. Review each phrase individually against "Phrases that stay untranslated"; never dismiss them as a group.
 4. Translate according to the rules above. Take the keys exactly as collected (see "Rules for the English key").
-5. Look for obsolete entries: keys that are confirmed neither by `collect-phrases`, nor by an `i18n/en_US.csv` under `vendor/magento`, `vendor/paypal` or `lib`, nor by a literal occurrence in a translated context (see "Literal occurrences"). Remove unconfirmed texts.
-6. Rewrite the file (sorted, deduplicated) and verify it.
+5. Look for obsolete entries with `bin/check obsolete <magento-root>`: keys that are confirmed neither by `collect-phrases`, nor by an `i18n/en_US.csv` under `vendor/magento`, `vendor/paypal` or `lib`, nor by a literal occurrence in a translated context (see "Literal occurrences"). Remove unconfirmed texts.
+6. Rewrite the file (sorted, deduplicated) and run `bin/check verify`.
 7. Update `README.md` if the supported version changes.
 
 `collect-phrases` does not find everything. Texts from data patches (e.g. attribute labels) or from `en_US.csv` are still translated at runtime. So always check all three sources from step 5 before treating an entry as obsolete.
@@ -173,15 +177,27 @@ Does **not** count as confirmation:
 
 When in doubt, read the surrounding code and check whether the string reaches `__()`, `$t()` or a mechanism listed above.
 
+## Check tool
+
+`bin/check` is a dependency-free PHP script. It implements the rules of this file; when a rule changes here, change the tool too.
+
+- `bin/check verify`: format and content checks of `de_DE.csv`. Exits with 1 on errors (column count, duplicates, sort order, canonical `fputcsv` format, placeholders, identical entries, line breaks, extra `*.csv` files). Warnings do not fail: changed HTML tags, formal address, changed brand names, junk keys, case-only changes, case variants with different translations. Review every warning.
+- `bin/check missing <magento-root> [--phrases=FILE]`: core phrases without an entry, pre-sorted by reason. Only "Junk" and "Own module translation" are reliable; every other group must be reviewed phrase by phrase.
+- `bin/check obsolete <magento-root> [--phrases=FILE]`: entries confirmed neither by `collect-phrases` nor by `en_US.csv`. Literal hits are classified by the rules under "Literal occurrences". "Manuell prüfen" needs a human decision; "Veraltet" entries can be removed after a quick look.
+
+The tool never writes `*.csv` files into the package directory, because Magento loads every `*.csv` there as a translation.
+
 ## Verification
 
-After every change to `de_DE.csv`:
+After every change to `de_DE.csv`, run `bin/check verify`. It covers:
 
 - Read with `fgetcsv` (escape `\\`): row count equals key count, every row has 2 or 4 columns.
 - Placeholders and HTML tags are identical in key and translation.
 - No translation is identical to its key.
 - No translation contains line breaks if the key contains none.
 - No translation uses the formal address (`Sie`, `Ihr…`, `Ihnen` as a form of address).
+Not covered by the tool, check these yourself:
+
 - No existing English key was changed unintentionally (compare the set of keys before and after).
 - Every core phrase without an entry is assigned to one of the reasons under "Phrases that stay untranslated". Report the count per reason, and list every untranslated phrase that is visible in the storefront explicitly.
 - For multi-line or unusual keys: check against the runtime string, e.g. via `Magento\Config\Model\Config\Structure\Data` for `system.xml` texts.
@@ -189,5 +205,5 @@ After every change to `de_DE.csv`:
 ## Working style
 
 - The diff should contain only the intended entries. No mass reformatting and no silent glossary alignments.
-- Helper scripts for comparison and verification do not belong in the repository unless explicitly requested.
+- Extend `bin/check` instead of writing one-off scripts for recurring checks. One-off helper scripts do not belong in the repository.
 - Flag translations with legal content (payment terms, privacy, right of withdrawal, financing information) for human review instead of silently adopting them.

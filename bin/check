@@ -1,0 +1,517 @@
+#!/usr/bin/env php
+<?php
+/**
+ * Prüf-Tool für das Sprachpaket.
+ *
+ *   bin/check verify                                  Format- und Inhaltsprüfung von de_DE.csv
+ *   bin/check missing  <magento-root> [--phrases=F]   Core-Phrasen ohne Übersetzung
+ *   bin/check obsolete <magento-root> [--phrases=F]   Einträge, die Magento nicht (mehr) übersetzt
+ *
+ * --phrases=F verwendet eine vorhandene Ausgabe von `bin/magento i18n:collect-phrases -m`,
+ * statt sie neu zu erzeugen. Die Regeln entsprechen README.md und CLAUDE.md.
+ */
+
+declare(strict_types=1);
+
+const PACK_DIR = __DIR__ . '/..';
+const PACK_FILE = PACK_DIR . '/de_DE.csv';
+const CORE_DIRS = ['vendor/magento', 'vendor/paypal', 'lib'];
+const SOURCE_EXT = '/\.(php|phtml|js|html|xml|graphqls)$/';
+
+/** Marken und Produktnamen, die unverändert in der Übersetzung stehen müssen */
+const BRANDS = [
+    'PayPal Credit', 'PayPal', 'Braintree', 'Venmo', 'Apple Pay', 'Google Pay', 'Fastlane', 'Ratepay', 'Klarna',
+    'iDEAL', 'Bancontact', 'BLIK', 'MyBank', 'Przelewy24', 'Visa', 'Mastercard', 'American Express', 'Discover',
+    'DHL', 'FedEx', 'UPS', 'USPS', 'Magento', 'Adobe Commerce', 'Adobe IMS', 'Adobe ID', 'Adobe Stock',
+    'Experience League', 'Page Builder', 'Payment Services', 'Commerce Services Connector', 'Google Maps',
+    'Google Analytics', 'reCAPTCHA', 'New Relic', 'NerdGraph', 'OpenSearch', 'Elasticsearch', 'AWS S3', 'Vimeo',
+    'YouTube', 'Duo Security', 'Swagger',
+];
+
+/** Junk aus collect-phrases: Code-Fragmente, Testtexte, interne Schlüssel, reine Zahlen */
+const JUNK_PATTERNS = [
+    "/^'.*' \\.$|^\\. '|' \\. \\. '|\" \\.$/s",           // Code-Fragmente aus String-Verkettungen
+    '/^(Test|Error|Entity|File Format) ?\d+$|^Test(Message| message| label| localized exception)$/',
+    '/^(Some localized error|Combined error message|Main (error )?message|Fallback message|Standard error|Original auth error)$/',
+    '/^[a-z]+(_[a-z]+)+$|^[a-z]+[A-Z]\w*$/',               // interne Schlüssel (snake_case, camelCase)
+    '/^settings\//',                                        // UI-Component-Pfade
+    '/^\s*formElements\//',
+    '/^\d+$/',
+    '/^\\\\?[A-Za-z]*Exception$/',                          // Exception-Klassennamen
+    '/[äöüÄÖÜß]/u',                                         // Schlüssel, die bereits deutsch sind
+];
+
+/** Module, deren Phrasen überwiegend Tarif- und Verpackungsnamen der Versanddienstleister sind */
+const CARRIER_MODULES = ['Magento_Ups', 'Magento_Usps', 'Magento_Dhl', 'Magento_Fedex'];
+
+/**
+ * Literal-Fundstellen, die eine Übersetzung belegen: [Pfad-Regex, Zeilen-Regex].
+ * Im Zeilen-Regex steht {Q} für den Text in Anführungszeichen ('…' oder "…") und {T} für den Text als
+ * vollständigen Elementinhalt. Der Text muss also direkt das Argument bzw. der ganze Inhalt sein.
+ */
+const LITERAL_CONFIRM = [
+    ['#/Setup/#', "/['\"](label|note|group|frontend_label)['\"]\\s*=>\\s*{Q}|(GroupName|groupName|TabName)\\s*=\\s*{Q}/"],
+    ['#/etc/(product_types|email_templates|import|export)\.xml$#', '/\blabel={Q}/'],
+    ['#/etc/(adminhtml/menu|acl)\.xml$#', '/\btitle={Q}/'],
+    ['#/layout/[^/]+\.xml$#', '/<page\b[^>]*\blabel={Q}/'],
+    ['#/ui_component/[^/]+\.xml$#', '/<(label|title|caption|notice)\b[^>]*>{T}<\/|<item name="[A-Za-z]*(Label|Title|label|title)"[^>]*>{T}<\//'],
+    ['#/etc/adminhtml/system(/[^/]+)?\.xml$#', '/<(label|comment|tooltip)\b[^>]*>(\s*<!\[CDATA\[)?{T}(\]\]>\s*)?<\/|<attribute type="[a-z_]*label">{T}<\//'],
+    ['#\.(js|html|phtml)$#', '/(\$t|\$\.mage\.__|\b_t|\b__)\(\s*{Q}|i18n:\s*{Q}/'],
+    ['#\.php$#', '/(\b__|->translate)\(\s*{Q}/'],
+];
+
+/** Literal-Fundstellen, die nie eine Übersetzung belegen (Pfad-Regex) */
+const LITERAL_REJECT_PATHS = '#/(Test|tests|Fixtures|FixtureGenerator)/|/dev/|/magento2-functional-testing-framework/'
+    . '|/php-compatibility-fork/|/zend-pdf/|/lib/web/(hugerte|tiny_mce|css/docs|jquery|legacy-build|prototype|less|vimeo)'
+    . '|/lib/web/(moment|underscore)\.js$|\.min\.js$|/etc/db_schema\.xml$|/etc/config\.xml$|/etc/di\.xml$|\.graphqls$#';
+
+exit(main($argv));
+
+function main(array $argv): int
+{
+    $cmd = $argv[1] ?? '';
+    $args = array_values(array_filter(array_slice($argv, 2), fn($a) => !str_starts_with($a, '--')));
+    $opts = [];
+    foreach (array_slice($argv, 2) as $a) {
+        if (preg_match('/^--([a-z-]+)=(.*)$/', $a, $m)) {
+            $opts[$m[1]] = $m[2];
+        }
+    }
+
+    switch ($cmd) {
+        case 'verify':
+            return verify();
+        case 'missing':
+        case 'obsolete':
+            if (!isset($args[0]) || !is_file($args[0] . '/bin/magento')) {
+                fwrite(STDERR, "Bitte den Pfad zu einer Magento-Installation angeben.\n");
+                return 2;
+            }
+            $root = realpath($args[0]);
+            $phrases = loadCorePhrases($root, $opts['phrases'] ?? null);
+            return $cmd === 'missing' ? missing($root, $phrases) : obsolete($root, $phrases);
+        default:
+            fwrite(STDERR, "Verwendung: bin/check verify | missing <magento-root> | obsolete <magento-root> [--phrases=DATEI]\n");
+            return 2;
+    }
+}
+
+// ---------------------------------------------------------------------------
+// verify
+// ---------------------------------------------------------------------------
+
+function verify(): int
+{
+    $errors = [];
+    $warnings = [];
+    $err = function (string $type, string $msg) use (&$errors) { $errors[$type][] = $msg; };
+    $warn = function (string $type, string $msg) use (&$warnings) { $warnings[$type][] = $msg; };
+
+    foreach (glob(PACK_DIR . '/*.csv') as $f) {
+        if (basename($f) !== 'de_DE.csv') {
+            $err('Zusätzliche CSV-Datei', basename($f) . ' (Magento lädt jede *.csv im Paket als Übersetzung)');
+        }
+    }
+
+    $rows = readCsv(PACK_FILE);
+    $seen = [];
+    $prev = null;
+    foreach ($rows as $i => $r) {
+        $line = 'Zeile ' . ($i + 1);
+        $k = $r[0] ?? '';
+        $v = $r[1] ?? '';
+        $label = $line . ': ' . short($k);
+
+        if (!in_array(count($r), [2, 4], true)) {
+            $err('Spaltenzahl', "$label hat " . count($r) . ' Spalten');
+        }
+        if (count($r) === 4 && !in_array($r[2], ['module', 'theme', 'lib'], true)) {
+            $warn('Kontextspalte', "$label: Spalte 3 ist \"{$r[2]}\"");
+        }
+        if ($k === '' || trim($v) === '') {
+            $err('Leerer Eintrag', $label);
+            continue;
+        }
+        if (isset($seen[$k])) {
+            $err('Doppelter Schlüssel', "$label (erstmals in Zeile {$seen[$k]})");
+        }
+        $seen[$k] = $i + 1;
+        if ($prev !== null && compareKeys($prev, $k) > 0) {
+            $err('Sortierung', "$label steht nach " . short($prev));
+        }
+        $prev = $k;
+
+        if ($v === $k) {
+            $err('Identisch mit Original', $label);
+        } elseif (normalize($v) === normalize($k)) {
+            $warn('Nur Schreibweise geändert', "$label => " . short($v));
+        }
+        if (placeholders($k) !== placeholders($v)) {
+            $err('Platzhalter', "$label => " . short($v));
+        }
+        if (tags($k) !== tags($v)) {
+            $warn('HTML-Tags', "$label => " . short($v));
+        }
+        if (!str_contains($k, "\n") && str_contains($v, "\n")) {
+            $err('Zeilenumbruch', $label);
+        }
+        if (preg_match('/(?<![.!?:]\s)(?<!^)\b(Sie|Ihr|Ihre[mnrs]?|Ihnen)\b/u', $v)) {
+            $warn('Sie-Form (prüfen)', "$label => " . short($v));
+        }
+        foreach (BRANDS as $brand) {
+            $re = '/(?<![\p{L}\d])' . preg_quote($brand, '/') . '(?![\p{L}\d])/u';
+            $reGenitive = '/(?<![\p{L}\d])' . preg_quote($brand, '/') . 's?(?![\p{L}\d])/u';
+            if (preg_match($re, $k) && !preg_match($reGenitive, str_replace('-', ' ', $v))) {
+                $warn('Markenname verändert', "$label: \"$brand\" fehlt in " . short($v));
+                break;
+            }
+        }
+        if (isJunk($k)) {
+            $warn('Junk-Schlüssel', $label);
+        }
+    }
+
+    // Varianten, die sich nur in Schreibweise unterscheiden, sollen gleich übersetzt sein
+    $groups = [];
+    foreach ($rows as $r) {
+        if (isset($r[1])) {
+            $groups[normalize($r[0])][] = $r;
+        }
+    }
+    foreach ($groups as $g) {
+        if (count($g) > 1 && count(array_unique(array_map(fn($r) => normalize($r[1]), $g))) > 1) {
+            $warn('Varianten unterschiedlich übersetzt', implode(' | ', array_map(fn($r) => short($r[0], 40) . ' => ' . short($r[1], 40), $g)));
+        }
+    }
+
+    // Kanonisches Format: Datei muss so aussehen, wie fputcsv sie schreibt
+    if (writeCsvString($rows) !== file_get_contents(PACK_FILE)) {
+        $err('Format', 'de_DE.csv weicht vom fputcsv-Format ab (mit fgetcsv lesen und fputcsv neu schreiben)');
+    }
+
+    report('Fehler', $errors);
+    report('Warnungen', $warnings);
+    printf("\n%d Einträge, %d Fehler, %d Warnungen\n", count($rows), countAll($errors), countAll($warnings));
+    return $errors ? 1 : 0;
+}
+
+// ---------------------------------------------------------------------------
+// missing
+// ---------------------------------------------------------------------------
+
+function missing(string $root, array $phrases): int
+{
+    $pack = packKeys();
+    $moduleOwn = moduleTranslations($root);
+    $groups = [];
+    foreach ($phrases as $k => $ctx) {
+        $k = (string) $k; // PHP macht aus numerischen Array-Schlüsseln Integer
+        if (isset($pack[$k])) {
+            continue;
+        }
+        $reason = match (true) {
+            isJunk($k) || isPlaceholderOnly($k) => '4 Junk oder nur Platzhalter/Markup',
+            isset($moduleOwn[$k]) => '5 Eigene Modulübersetzung',
+            in_array($ctx, CARRIER_MODULES, true) => '1 Versanddienstleister (Tarif-/Verpackungsname, prüfen)',
+            isBrandOnly($k) => '1/2 Marke oder Fachbegriff (prüfen)',
+            default => 'Einzeln prüfen: übersetzen oder Grund 3 (gleiches deutsches Wort)',
+        };
+        $groups[$reason][] = "[$ctx] " . short($k, 160);
+    }
+    ksort($groups);
+    report('Core-Phrasen ohne Eintrag', array_reverse($groups, true));
+    echo "\nJede Phrase einzeln nach \"Phrases that stay untranslated\" (CLAUDE.md) einordnen; nur Junk und Modulübersetzungen sind sicher.\n";
+    return 0;
+}
+
+// ---------------------------------------------------------------------------
+// obsolete
+// ---------------------------------------------------------------------------
+
+function obsolete(string $root, array $phrases): int
+{
+    $pack = packKeys();
+    $confirmed = $phrases + enUsKeys($root);
+    $candidates = array_diff_key($pack, $confirmed);
+    $hits = literalHits($root, array_map('strval', array_keys($candidates)));
+
+    $result = ['Veraltet (keine Fundstelle)' => [], 'Veraltet (nur Fundstellen ohne Übersetzung)' => [], 'Manuell prüfen' => []];
+    $confirmedByLiteral = 0;
+    foreach ($candidates as $k => $_) {
+        $k = (string) $k;
+        $classes = array_map(fn($h) => $h['class'], $hits[$k] ?? []);
+        if (in_array('confirm', $classes, true)) {
+            $confirmedByLiteral++;
+            continue;
+        }
+        $shown = array_filter($hits[$k] ?? [], fn($h) => $h['class'] === 'unclear') ?: ($hits[$k] ?? []);
+        $where = array_map(fn($h) => '      ' . $h['file'] . ':' . $h['line'] . '  ' . short($h['text'], 120), array_slice($shown, 0, 3));
+        $entry = short($k, 160) . ($where ? "\n" . implode("\n", $where) : '');
+        if (!$classes) {
+            $result['Veraltet (keine Fundstelle)'][] = $entry;
+        } elseif (!in_array('unclear', $classes, true)) {
+            $result['Veraltet (nur Fundstellen ohne Übersetzung)'][] = $entry;
+        } else {
+            $result['Manuell prüfen'][] = $entry;
+        }
+    }
+    report('Einträge ohne Beleg durch collect-phrases oder en_US.csv', $result);
+    printf("\n%d Einträge geprüft, %d über Literal-Treffer belegt\n", count($candidates), $confirmedByLiteral);
+    return 0;
+}
+
+/** Sucht Schlüssel als '…', "…" oder >…< in Core-Dateien und ordnet jede Fundstelle ein */
+function literalHits(string $root, array $keys): array
+{
+    $hits = [];
+    foreach (CORE_DIRS as $dir) {
+        if (!is_dir("$root/$dir")) {
+            continue;
+        }
+        $it = new RecursiveIteratorIterator(new RecursiveDirectoryIterator("$root/$dir", FilesystemIterator::SKIP_DOTS));
+        foreach ($it as $file) {
+            $path = $file->getPathname();
+            if (!preg_match(SOURCE_EXT, $path) || str_contains($path, '/i18n/')) {
+                continue;
+            }
+            $content = @file_get_contents($path);
+            if ($content === false) {
+                continue;
+            }
+            $rel = substr($path, strlen($root) + 1);
+            foreach ($keys as $k) {
+                if (strpos($content, $k) === false) {
+                    continue;
+                }
+                $seenLines = [];
+                foreach (["'" . str_replace("'", "\\'", $k) . "'", '"' . str_replace('"', '\\"', $k) . '"', '>' . $k . '<', '[CDATA[' . $k . ']]'] as $needle) {
+                    for ($pos = strpos($content, $needle); $pos !== false; $pos = strpos($content, $needle, $pos + 1)) {
+                        $lineStart = strrpos(substr($content, 0, $pos), "\n");
+                        $lineStart = $lineStart === false ? 0 : $lineStart + 1;
+                        $lineEnd = strpos($content, "\n", $pos + strlen($needle));
+                        $text = substr($content, $lineStart, ($lineEnd === false ? strlen($content) : $lineEnd) - $lineStart);
+                        $lineNo = substr_count($content, "\n", 0, $pos) + 1;
+                        if (isset($seenLines[$lineNo])) {
+                            continue;
+                        }
+                        $seenLines[$lineNo] = true;
+                        $class = classifyHit('/' . $rel, $text, $k);
+                        // Fundstellen ohne Beleg nur beispielhaft aufheben, Belege immer
+                        $sameClass = count(array_filter($hits[$k] ?? [], fn($h) => $h['class'] === $class));
+                        if ($class !== 'confirm' && $sameClass >= 3) {
+                            continue;
+                        }
+                        $hits[$k][] = ['file' => $rel, 'line' => $lineNo, 'text' => trim($text), 'class' => $class];
+                    }
+                }
+            }
+        }
+    }
+    return $hits;
+}
+
+function classifyHit(string $path, string $line, string $key): string
+{
+    if (preg_match(LITERAL_REJECT_PATHS, $path) || preg_match('/^\s*(\*|\/\/|#|<!--(?!\s*ko\b))/', $line)) {
+        return 'reject';
+    }
+    $quoted = "(?:'" . preg_quote(str_replace("'", "\\'", $key), '/') . "'|\"" . preg_quote(str_replace('"', '\\"', $key), '/') . '")';
+    $text = '\s*' . preg_quote($key, '/') . '\s*';
+    foreach (LITERAL_CONFIRM as [$pathRe, $lineRe]) {
+        if (preg_match($pathRe, $path) && preg_match(str_replace(['{Q}', '{T}'], [$quoted, $text], $lineRe), $line)) {
+            return 'confirm';
+        }
+    }
+    // Typische Nicht-Übersetzungen im Code
+    if (preg_match('/\b(const|case)\b|"var [^"]+"\s*:|@doc\(|new \\\\?\w*Exception\(|setPageTitle\(/', $line)) {
+        return 'reject';
+    }
+    return 'unclear';
+}
+
+// ---------------------------------------------------------------------------
+// Quellen
+// ---------------------------------------------------------------------------
+
+/** Core-Phrasen aus collect-phrases: [phrase => kontext] */
+function loadCorePhrases(string $root, ?string $file): array
+{
+    if ($file === null) {
+        $file = sys_get_temp_dir() . '/mkleine-language-pack-phrases.txt';
+        fwrite(STDERR, "Sammle Phrasen mit bin/magento i18n:collect-phrases (dauert etwa eine Minute) ...\n");
+        passthru('cd ' . escapeshellarg($root) . ' && php -d memory_limit=-1 bin/magento i18n:collect-phrases -m -o ' . escapeshellarg($file) . ' >&2', $code);
+        if ($code !== 0) {
+            fwrite(STDERR, "collect-phrases ist fehlgeschlagen.\n");
+            exit(2);
+        }
+    }
+    $phrases = [];
+    foreach (readCsv($file) as $d) {
+        $type = $d[2] ?? '';
+        $ctx = $d[3] ?? '';
+        $core = ($type === 'module' && preg_match('/^(Magento|PayPal)_/', $ctx))
+            || $type === 'lib'
+            || ($type === 'theme' && str_contains($ctx, '/Magento/'));
+        if ($core && !isset($phrases[$d[0]])) {
+            $phrases[$d[0]] = $ctx;
+        }
+    }
+    return $phrases;
+}
+
+function enUsKeys(string $root): array
+{
+    $keys = [];
+    foreach (CORE_DIRS as $dir) {
+        foreach (findFiles("$root/$dir", 'en_US.csv') as $f) {
+            if (!preg_match('#/(Test|tests|dev)/#', $f)) {
+                foreach (readCsv($f) as $d) {
+                    $keys[$d[0]] = 'en_US.csv';
+                }
+            }
+        }
+    }
+    return $keys;
+}
+
+/** Übersetzungen, die Core-Module selbst mitbringen (i18n/de_DE.csv) */
+function moduleTranslations(string $root): array
+{
+    $keys = [];
+    foreach (['vendor/magento', 'vendor/paypal'] as $dir) {
+        foreach (findFiles("$root/$dir", 'de_DE.csv') as $f) {
+            if (str_contains($f, '/i18n/') && !preg_match('#/(Test|tests|dev)/#', $f)) {
+                foreach (readCsv($f) as $d) {
+                    $keys[$d[0]] = true;
+                }
+            }
+        }
+    }
+    return $keys;
+}
+
+function findFiles(string $dir, string $name): array
+{
+    if (!is_dir($dir)) {
+        return [];
+    }
+    $out = [];
+    $it = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($dir, FilesystemIterator::SKIP_DOTS));
+    foreach ($it as $f) {
+        if ($f->getFilename() === $name) {
+            $out[] = $f->getPathname();
+        }
+    }
+    return $out;
+}
+
+function packKeys(): array
+{
+    $keys = [];
+    foreach (readCsv(PACK_FILE) as $r) {
+        $keys[$r[0]] = $r[1] ?? '';
+    }
+    return $keys;
+}
+
+// ---------------------------------------------------------------------------
+// Hilfsfunktionen
+// ---------------------------------------------------------------------------
+
+function readCsv(string $file): array
+{
+    $rows = [];
+    $h = fopen($file, 'r');
+    while (($d = fgetcsv($h, null, ',', '"', '\\')) !== false) {
+        if ($d !== [null]) {
+            $rows[] = $d;
+        }
+    }
+    fclose($h);
+    return $rows;
+}
+
+function writeCsvString(array $rows): string
+{
+    $h = fopen('php://memory', 'w+');
+    foreach ($rows as $r) {
+        fputcsv($h, $r, ',', '"', '\\');
+    }
+    rewind($h);
+    return stream_get_contents($h);
+}
+
+function compareKeys(string $a, string $b): int
+{
+    return strcasecmp($a, $b) ?: strcmp($a, $b);
+}
+
+function normalize(string $s): string
+{
+    return mb_strtolower(trim(preg_replace('/[\s.:!?]+$/u', '', preg_replace('/\s+/u', ' ', $s))));
+}
+
+function placeholders(string $s): array
+{
+    preg_match_all('/%(?:\d+|[a-zA-Z_][a-zA-Z0-9_]*%?)|\{\{[^}]+\}\}/', $s, $m);
+    sort($m[0]);
+    return $m[0];
+}
+
+function tags(string $s): array
+{
+    preg_match_all('/<\/?([a-zA-Z][a-zA-Z0-9]*)/', $s, $m);
+    $t = array_map('strtolower', $m[1]);
+    sort($t);
+    return $t;
+}
+
+function isJunk(string $k): bool
+{
+    foreach (JUNK_PATTERNS as $re) {
+        if (preg_match($re, $k)) {
+            return true;
+        }
+    }
+    return false;
+}
+
+/** Phrase enthält außer Platzhaltern, HTML und Satzzeichen keine Wörter */
+function isPlaceholderOnly(string $k): bool
+{
+    $rest = preg_replace(['/%(?:\d+|[a-zA-Z_][a-zA-Z0-9_]*%?)|\{\{[^}]+\}\}/', '/<[^>]+>/', '/&[a-z]+;/'], '', $k);
+    return preg_match('/\p{L}{2,}/u', $rest) !== 1;
+}
+
+/** Phrase besteht nur aus Markennamen, Abkürzungen, Einheiten oder Großbuchstaben-Codes */
+function isBrandOnly(string $k): bool
+{
+    $rest = str_ireplace(BRANDS, '', $k);
+    return preg_match('/^[\sA-Z0-9™®&()\/.,:+-]*$/', $rest) === 1 || preg_match('/^(cm|kg|lb|in|px|ms)\.?$/', trim($k)) === 1;
+}
+
+function short(string $s, int $len = 90): string
+{
+    $s = preg_replace('/\s+/u', ' ', trim($s));
+    return mb_strlen($s) > $len ? mb_substr($s, 0, $len - 1) . '…' : $s;
+}
+
+function countAll(array $groups): int
+{
+    return array_sum(array_map('count', $groups));
+}
+
+function report(string $title, array $groups): void
+{
+    $groups = array_filter($groups);
+    if (!$groups) {
+        return;
+    }
+    echo "\n== $title\n";
+    foreach ($groups as $type => $items) {
+        echo "\n$type (" . count($items) . ")\n";
+        foreach ($items as $item) {
+            echo "  - $item\n";
+        }
+    }
+}

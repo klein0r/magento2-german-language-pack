@@ -1,0 +1,5 @@
+# Nicht im Composer-Paket ausliefern, nur im Repository
+/.github        export-ignore
+/bin            export-ignore
+/.gitattributes export-ignore
+/CLAUDE.md      export-ignore
