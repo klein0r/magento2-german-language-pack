@@ -1856,7 +1856,7 @@ Checkbox,"ankreuzbare Kontrollfelder (Checkboxen)",module,Magento_Bundle
 "Checked rows: %1, checked entities: %2, invalid rows: %3, total errors: %4","Geprüfte Zeilen: %1, geprüft Einheiten: %2, ungültige Zeilen: %3, Gesamtfehler: %4",module,Magento_ImportExport
 Checkout,Kasse,module,Magento_Checkout
 "Checkout agreement with specified ID ""%1"" not found.","Checkout-Vereinbarung mit angegebener ID ""%1"" nicht gefunden."
-"Checkout as a new customer","Als Neukunde auschecken",module,Magento_Customer
+"Checkout as a new customer","Neues Kundenkonto erstellen",module,Magento_Customer
 "Checkout Cart Page",Warenkorb-Checkout-Seite,module,Magento_Paypal
 "Checkout Conditions",Checkout-Bedingungen,module,Magento_CheckoutAgreements
 "Checkout Method",Checkout-Methode
@@ -1866,7 +1866,7 @@ Checkout,Kasse,module,Magento_Checkout
 "Checkout Terms and Conditions",Checkout-AGB,module,Magento_CheckoutAgreements
 "Checkout Totals Sort Order",Bestellsummen-Sortierreihenfolge,module,Magento_Sales
 "Checkout Type",Checkout-Typ,module,Magento_Checkout
-"Checkout using your account","Auschecken über dein Konto",module,Magento_Customer
+"Checkout using your account","Mit bestehendem Konto zur Kasse",module,Magento_Customer
 "Checkout with PayPal","Checkout mit PayPal",module,Magento_Paypal
 "Child items may not be updated.","Untergeordnete Artikel können nicht aktualisiert werden.",module,Magento_QuoteGraphQl
 "Child process failed with message: %1","Der Kindprozess ist mit folgender Meldung fehlgeschlagen: %1",module,Magento_Indexer
@@ -2090,7 +2090,7 @@ Contact,Kontakt
 "Contact Name",Kontaktname,module,Magento_InventoryAdminUi
 "Contact Page",Kontaktseite,module,Magento_Securitytxt
 "Contact Preference",Kontaktpräferenz,module,Magento_PaymentServicesPaypal
-"Contact Us","Kontaktiere uns",module,Magento_Contact
+"Contact Us",Kontakt,module,Magento_Contact
 "contact us","Kontaktiere uns",module,Magento_Shipping
 Contacts,Kontakte,module,Magento_Contact
 "Contacts Section","Abschnitt Kontakte",module,Magento_Contact
@@ -3872,7 +3872,7 @@ Group,Gruppe,module,Magento_Customer
 "Grouped Products","Gruppierte Produkte",module,Magento_GroupedProduct
 Groups,Gruppen,module,Magento_Catalog
 Guest,Gast,module,Magento_Backend
-"Guest checkout is disabled.","Gästekasse ist deaktiviert.",module,Magento_Checkout
+"Guest checkout is disabled.","Bestellungen als Gast sind nicht möglich. Bitte registriere dich oder melde dich an.",module,Magento_Checkout
 "Guest checkout is not allowed. Register a customer account or login with existing one.","Das Auschecken von Gästen ist nicht erlaubt. Registriere ein Kundenkonto oder logge dich mit einem bestehenden ein.",module,Magento_QuoteGraphQl
 "Guest checkout will only work with shareable.","Gäste-Checkout funktioniert nur mit gemeinsam genutzten",module,Magento_Downloadable
 "Guest customers aren't allowed to add product reviews.","Gäste dürfen keine Produktbewertungen abgeben.",module,Magento_ReviewGraphQl
@@ -6183,7 +6183,7 @@ Plain,Schlicht,module,Magento_PaymentServicesPaypal
 "Please specify value in minutes.","Bitte gib den Wert in Minuten an.",module,Magento_Customer
 "Please try again later","Bitte versuche es später erneut."
 "Please try again with another form of payment.","Bitte versuche es noch einmal mit einer anderen Zahlart.",module,PayPal_Braintree
-"Please type the letters and numbers below","Bitte gib die Buchstaben und Zahlen unten ein",module,Magento_Captcha
+"Please type the letters and numbers below","Bitte gib die Buchstaben und Zahlen aus dem Bild ein",module,Magento_Captcha
 "Please update order data to get shipping methods and rates","Bitte aktualisiere deine Bestelldaten, um Versandarten und -Preise zu erhalten",module,Magento_PaymentServicesPaypal
 "Please use a four-digit year format.","Bitte verwende ein vierstelliges Jahresformat.",module,Magento_Catalog
 "Please use letters only (a-z or A-Z) in this field.","Bitte verwende nur Buchstaben (a-z oder A-Z) in diesem Feld.",module,lib/web/mage/validation.js
@@ -9938,7 +9938,7 @@ yes,Ja
 Yes/No,Ja/Nein,module,Magento_Eav
 "You activated a total of %1 records.","Du hast insgesamt %1 Datensätze aktiviert.",module,Magento_CatalogRule
 "You added %1 to your <a href=""%2"">shopping cart</a>.","Du hast %1 zum <a href=""%2"">Warenkorb</a> hinzugefügt.",module,Magento_Checkout
-"You added %1 to your shopping cart.","Du hast %1 zu deinem Warenkorb hinzugefügt.",module,Magento_Checkout
+"You added %1 to your shopping cart.","%1 wurde zum Warenkorb hinzugefügt.",module,Magento_Checkout
 "You added product %1 to the <a href=""%2"">comparison list</a>.","Du hast das Produkt %1 zur <a href=""%2"">Vergleichsliste</a> hinzugefügt.",module,Magento_Catalog
 "You already have an account with us. Sign in or continue as guest.","Du hast bereits ein Konto bei uns. Melde dich an oder fahre als Gast fort.",module,Magento_Checkout
 "You already have an identical search term query.","Du hast bereits eine identische Suchanfrage gestellt.",module,Magento_Search
@@ -9955,7 +9955,7 @@ Yes/No,Ja/Nein,module,Magento_Eav
 "You are required to configure personal Two-Factor Authorization in order to login to %store","Du musst die persönliche Zwei-Faktor-Authentifizierung konfigurieren, um dich bei %store anzumelden",module,Magento_TwoFactorAuth
 "You are required to configure website-wide and personal Two-Factor Authorization in order to login to %store","Du musst die websiteweite und persönliche Zwei-Faktor-Authentifizierung konfigurieren, um dich bei %store anzumelden",module,Magento_TwoFactorAuth
 "You are signed out","Du hast dich ausgeloggt",module,Magento_Customer
-"You are subscribed to ""General Subscription"".","Du hast ""Allgemeines Abonnement"" abonniert",module,Magento_Customer
+"You are subscribed to ""General Subscription"".","Du bist für unseren Newsletter angemeldet.",module,Magento_Customer
 "You are subscribed to our newsletter.","Du bist für unseren Newsletter angemeldet.",module,Magento_Customer
 "You are trying to add a quantity for some products that doesn't match the quantity that was shipped.","Du versuchst, eine Menge für einige Produkte hinzuzufügen, die nicht mit der Menge übereinstimmt, die geliefert wurde.",module,Magento_Shipping
 "You aren't subscribed to our newsletter.","Du bist nicht für unseren Newsletter angemeldet.",module,Magento_Customer
@@ -9986,7 +9986,7 @@ Yes/No,Ja/Nein,module,Magento_Eav
 "You can't send messages more than %1 times an hour.","Du kannst Nachrichten nicht öfter als %1 Mal pro Stunde versenden.",module,Magento_SendFriendGraphQl
 "You can't use the payment type you selected to make payments to the billing country.","Du kannst die von dir gewählte Zahlungsmethode nicht verwenden, um Zahlungen an das Rechnungsland zu leisten.",module,Magento_Payment
 "You canceled the billing agreement.","Du hast die Abrechnungsvereinbarung storniert.",module,Magento_Paypal
-"You canceled the coupon code.","Du hast den Gutscheincode storniert.",module,Magento_Checkout
+"You canceled the coupon code.","Der Gutscheincode wurde entfernt.",module,Magento_Checkout
 "You canceled the invoice.","Du hast die Rechnung storniert.",module,Magento_Sales
 "You canceled the order.","Du hast die Bestellung storniert.",module,Magento_Sales
 "You cannot cancel the order(s).","Du kannst die Bestellung(en) nicht abbrechen.",module,Magento_Sales
@@ -10157,11 +10157,11 @@ Yes/No,Ja/Nein,module,Magento_Eav
 "You sent the order email.","Du hast die Bestellung per E-Mail versendet.",module,Magento_Sales
 "You sent the shipment.","Du hast die Sendung verschickt.",module,Magento_Shipping
 "You should select one or more items to ship.","Du solltest einen oder mehrere Artikel für den Versand auswählen.",module,Magento_InventoryShippingAdminUi
-"You submitted your review for moderation.","Du hast deine Bewertung für die Moderation übermittelt.",module,Magento_Review
+"You submitted your review for moderation.","Deine Bewertung wurde zur Prüfung übermittelt. Vielen Dank!",module,Magento_Review
 "You unsubscribed.","Du hast dich abgemeldet.",module,Magento_Newsletter
 "You updated the order address.","Du hast die Bestelladresse aktualisiert.",module,Magento_Sales
 "You updated your password.","Du hast dein Passwort aktualisiert.",module,Magento_Customer
-"You used coupon code ""%1"".","Du hast den Gutscheincode ""%1"" verwendet.",module,Magento_Checkout
+"You used coupon code ""%1"".","Der Gutscheincode ""%1"" wurde angewendet.",module,Magento_Checkout
 "You voided the credit memo.","Du hast die Gutschrift storniert.",module,Magento_Sales
 "You will be charged for","Es werden dir folgende Kosten in Rechnung gestellt",module,Magento_Tax
 "You will be charged tax.","Es werden Steuern erhoben.",module,Magento_Customer
@@ -10214,7 +10214,7 @@ Yes/No,Ja/Nein,module,Magento_Eav
 "Your Order <span class=""no-link"">#%increment_id</span>","Deine Bestellung <span class=""no-link"">#%increment_id</span>",module,Magento_Sales
 "Your Order <span class=""no-link"">#%increment_id</span> is complete","Deine Bestellung <span class=""no-link"">#%increment_id</span> ist abgeschlossen",module,Magento_InventoryInStorePickupSales
 "Your order number is: ","Deine Bestellnummer lautet:"
-"Your order number is: %1.","Deine Bestellnummer ist: %1",module,Magento_Checkout
+"Your order number is: %1.","Deine Bestellnummer lautet: %1.",module,Magento_Checkout
 "Your order numbers are: ","Deine Bestellnummern lauten:"
 "Your order placed from %store_name is ready for pickup.","Deine Bestellung bei %store_name ist zur Abholung bereit.",module,Magento_InventoryInStorePickupSales
 "Your Packaging","Deine Verpackung",module,Magento_Fedex
