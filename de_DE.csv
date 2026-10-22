@@ -9936,13 +9936,13 @@ yes,Ja
 "Yes (PayPal recommends this option)","Ja (PayPal empfiehlt diese Option)",module,Magento_Paypal
 "Yes. Matched Address and five-digit ZIP","Ja. Abgestimmte Adresse und fünfstellige ZIP-Adresse",module,Magento_Paypal
 Yes/No,Ja/Nein,module,Magento_Eav
-"You activated a total of %1 records.","Du hast insgesamt %1 Datensätze aktiviert.",module,Magento_CatalogRule
-"You added %1 to your <a href=""%2"">shopping cart</a>.","Du hast %1 zum <a href=""%2"">Warenkorb</a> hinzugefügt.",module,Magento_Checkout
+"You activated a total of %1 records.","Insgesamt wurden %1 Datensätze aktiviert.",module,Magento_CatalogRule
+"You added %1 to your <a href=""%2"">shopping cart</a>.","%1 wurde zum <a href=""%2"">Warenkorb</a> hinzugefügt.",module,Magento_Checkout
 "You added %1 to your shopping cart.","%1 wurde zum Warenkorb hinzugefügt.",module,Magento_Checkout
-"You added product %1 to the <a href=""%2"">comparison list</a>.","Du hast das Produkt %1 zur <a href=""%2"">Vergleichsliste</a> hinzugefügt.",module,Magento_Catalog
+"You added product %1 to the <a href=""%2"">comparison list</a>.","Das Produkt %1 wurde zur <a href=""%2"">Vergleichsliste</a> hinzugefügt.",module,Magento_Catalog
 "You already have an account with us. Sign in or continue as guest.","Du hast bereits ein Konto bei uns. Melde dich an oder fahre als Gast fort.",module,Magento_Checkout
 "You already have an identical search term query.","Du hast bereits eine identische Suchanfrage gestellt.",module,Magento_Search
-"You applied the custom currency symbols.","Du hast die benutzerdefinierten Währungssymbole angewandt.",module,Magento_CurrencySymbol
+"You applied the custom currency symbols.","Die benutzerdefinierten Währungssymbole wurden angewandt.",module,Magento_CurrencySymbol
 "You are about to delete all products in this attribute set. Are you sure you want to do that?","Du bist dabei, alle Produkte dieses Attributsets zu löschen. Bist du sicher, dass du dies tun willst?",module,Magento_Catalog
 "You are about to Login as Customer","Du bist dabei, dich als Kunde anzumelden",module,Magento_LoginAsCustomerAdminUi
 "You are connected as <strong>%1</strong> on %2","Du bist als <strong>%1</strong> auf %2 verbunden",module,Magento_LoginAsCustomerFrontendUi
@@ -9959,7 +9959,7 @@ Yes/No,Ja/Nein,module,Magento_Eav
 "You are subscribed to our newsletter.","Du bist für unseren Newsletter angemeldet.",module,Magento_Customer
 "You are trying to add a quantity for some products that doesn't match the quantity that was shipped.","Du versuchst, eine Menge für einige Produkte hinzuzufügen, die nicht mit der Menge übereinstimmt, die geliefert wurde.",module,Magento_Shipping
 "You aren't subscribed to our newsletter.","Du bist nicht für unseren Newsletter angemeldet.",module,Magento_Customer
-"You assigned the order status.","Du hast den Auftragsstatus zugeordnet.",module,Magento_Sales
+"You assigned the order status.","Der Auftragsstatus wurde zugeordnet.",module,Magento_Sales
 "You can adjust the scope of this synonym group by selecting an option from the list.","Du kannst den Geltungsbereich dieser Synonymgruppe anpassen, indem du eine Option aus der Liste wählst",module,Magento_Search
 "You can buy %1 only in quantities of %2 at a time.","Du kannst %1 nur in Mengen von %2 kaufen.",module,Magento_CatalogInventory
 "You can buy this product only in quantities of %1 at a time.","Du kannst dieses Produkt nur in Mengen von %1 kaufen.",module,Magento_CatalogInventory
@@ -9985,10 +9985,10 @@ Yes/No,Ja/Nein,module,Magento_Eav
 "You can't remove attributes from this attribute set.","Du kannst Attribute nicht von diesem Attributset entfernen.",module,Magento_Catalog
 "You can't send messages more than %1 times an hour.","Du kannst Nachrichten nicht öfter als %1 Mal pro Stunde versenden.",module,Magento_SendFriendGraphQl
 "You can't use the payment type you selected to make payments to the billing country.","Du kannst die von dir gewählte Zahlungsmethode nicht verwenden, um Zahlungen an das Rechnungsland zu leisten.",module,Magento_Payment
-"You canceled the billing agreement.","Du hast die Abrechnungsvereinbarung storniert.",module,Magento_Paypal
+"You canceled the billing agreement.","Die Abrechnungsvereinbarung wurde storniert.",module,Magento_Paypal
 "You canceled the coupon code.","Der Gutscheincode wurde entfernt.",module,Magento_Checkout
-"You canceled the invoice.","Du hast die Rechnung storniert.",module,Magento_Sales
-"You canceled the order.","Du hast die Bestellung storniert.",module,Magento_Sales
+"You canceled the invoice.","Die Rechnung wurde storniert.",module,Magento_Sales
+"You canceled the order.","Die Bestellung wurde storniert.",module,Magento_Sales
 "You cannot cancel the order(s).","Du kannst die Bestellung(en) nicht abbrechen.",module,Magento_Sales
 "You cannot delete self-assigned roles.","Du kannst selbst zugewiesene Rollen nicht löschen.",module,Magento_User
 "You cannot delete this tax class because it is used in existing %1(s).","Diese Steuerklasse kann nicht gelöscht werden, da sie in %1(s) benutzt wird.",module,Magento_Tax
@@ -10001,56 +10001,56 @@ Yes/No,Ja/Nein,module,Magento_Eav
 "You cannot use decimal quantity for this product.","Für dieses Produkt kannst du keine dezimale Menge verwenden.",module,Magento_CatalogInventory
 "You cannot void a verification transaction.","Du kannst eine Verifizierungs-Transaktion nicht löschen."
 "You cleared the comparison list.","Die Vergleichsliste wurde geleert.",module,Magento_Catalog
-"You created the credit memo.","Du hast die Gutschrift erstellt.",module,Magento_Sales
-"You created the database and media backup.","Du hast ein Datenbank- und Medien-Backup erstellt.",module,Magento_Backup
-"You created the database backup.","Du hast ein Datenbank-Backup erstellt.",module,Magento_Backup
-"You created the invoice and shipment.","Du hast die Rechnung und Sendung erstellt.",module,Magento_Sales
-"You created the order.","Du hast die Bestellung erstellt.",module,Magento_Sales
-"You created the shipping label.","Du hast das Versandetikett erstellt.",module,Magento_Shipping
+"You created the credit memo.","Die Gutschrift wurde erstellt.",module,Magento_Sales
+"You created the database and media backup.","Ein Datenbank- und Medien-Backup wurde erstellt.",module,Magento_Backup
+"You created the database backup.","Ein Datenbank-Backup wurde erstellt.",module,Magento_Backup
+"You created the invoice and shipment.","Die Rechnung und Sendung wurden erstellt.",module,Magento_Sales
+"You created the order.","Die Bestellung wurde erstellt.",module,Magento_Sales
+"You created the shipping label.","Das Versandetikett wurde erstellt.",module,Magento_Shipping
 "You created the system backup (excluding media).","Die System Datensicherung wurde erstellt (außer Medien).",module,Magento_Backup
-"You created the system backup.","Du hast ein System-Backup erstellt.",module,Magento_Backup
-"You created these products for this configuration.","Du hast diese Produkte für diese Konfiguration erstellt.",module,Magento_ConfigurableProduct
-"You deactivated a total of %1 records.","Du hast insgesamt %1 Datensätze deaktiviert.",module,Magento_CatalogRule
-"You deleted %1 Stock(s).","Du hast %1 Bestand(e) gelöscht.",module,Magento_InventoryAdminUi
-"You deleted the address.","Du hast die Adresse gelöscht.",module,Magento_Customer
-"You deleted the alert subscription.","Du hast das Benachrichtigungsabonnement gelöscht.",module,Magento_ProductAlert
-"You deleted the billing agreement.","Du hast die Abrechnungsvereinbarung gelöscht.",module,Magento_Paypal
-"You deleted the block.","Du hast den Block gelöscht.",module,Magento_Cms
-"You deleted the category.","Du hast die Kategorie gelöscht.",module,Magento_Catalog
-"You deleted the condition.","Du hast die Bedingung gelöscht.",module,Magento_CheckoutAgreements
-"You deleted the custom variable.","Du hast die benutzerdefinierte Variable gelöscht.",module,Magento_Variable
-"You deleted the customer group.","Du hast die Kundengruppe gelöscht.",module,Magento_Customer
-"You deleted the customer.","Du hast den Kunden gelöscht.",module,Magento_Customer
-"You deleted the design change.","Du hast die Designänderung gelöscht.",module,Magento_Backend
-"You deleted the email template.","Du hast die E-Mail-Vorlage gelöscht.",module,Magento_Email
-"You deleted the product attribute.","Du hast das Produktattribut gelöscht.",module,Magento_Catalog
-"You deleted the rating.","Du hast die Bewertung gelöscht.",module,Magento_Review
-"You deleted the role.","Du hast diese Rolle gelöscht.",module,Magento_User
-"You deleted the rule.","Du hast die Regel gelöscht.",module,Magento_CatalogRule
-"You deleted the search.","Du hast die Suche gelöscht.",module,Magento_Search
+"You created the system backup.","Ein System-Backup wurde erstellt.",module,Magento_Backup
+"You created these products for this configuration.","Diese Produkte wurden für diese Konfiguration erstellt.",module,Magento_ConfigurableProduct
+"You deactivated a total of %1 records.","Insgesamt wurden %1 Datensätze deaktiviert.",module,Magento_CatalogRule
+"You deleted %1 Stock(s).","%1 Bestand(e) wurde(n) gelöscht.",module,Magento_InventoryAdminUi
+"You deleted the address.","Die Adresse wurde gelöscht.",module,Magento_Customer
+"You deleted the alert subscription.","Das Benachrichtigungsabonnement wurde gelöscht.",module,Magento_ProductAlert
+"You deleted the billing agreement.","Die Abrechnungsvereinbarung wurde gelöscht.",module,Magento_Paypal
+"You deleted the block.","Der Block wurde gelöscht.",module,Magento_Cms
+"You deleted the category.","Die Kategorie wurde gelöscht.",module,Magento_Catalog
+"You deleted the condition.","Die Bedingung wurde gelöscht.",module,Magento_CheckoutAgreements
+"You deleted the custom variable.","Die benutzerdefinierte Variable wurde gelöscht.",module,Magento_Variable
+"You deleted the customer group.","Die Kundengruppe wurde gelöscht.",module,Magento_Customer
+"You deleted the customer.","Der Kunde wurde gelöscht.",module,Magento_Customer
+"You deleted the design change.","Die Designänderung wurde gelöscht.",module,Magento_Backend
+"You deleted the email template.","Die E-Mail-Vorlage wurde gelöscht.",module,Magento_Email
+"You deleted the product attribute.","Das Produktattribut wurde gelöscht.",module,Magento_Catalog
+"You deleted the rating.","Die Bewertung wurde gelöscht.",module,Magento_Review
+"You deleted the role.","Die Rolle wurde gelöscht.",module,Magento_User
+"You deleted the rule.","Die Regel wurde gelöscht.",module,Magento_CatalogRule
+"You deleted the search.","Die Suche wurde gelöscht.",module,Magento_Search
 "You deleted the selected backup(s).","Die ausgewählten Datensicherungen wurden gelöscht..",module,Magento_Backup
-"You deleted the sitemap.","Du hast die Sitemap gelöscht.",module,Magento_Sitemap
+"You deleted the sitemap.","Die Sitemap wurde gelöscht.",module,Magento_Sitemap
 "You deleted the store view.","Store View wurde gelöscht.",module,Magento_Backend
 "You deleted the store.","Der Shop wurde gelöscht.",module,Magento_Backend
-"You deleted the tax rate.","Du hast diesen Steuersatz gelöscht.",module,Magento_Tax
-"You deleted the theme.","Du hast das Theme gelöscht.",module,Magento_Theme
-"You deleted the URL rewrite.","Du hast den URL-Rewrite gelöscht",module,Magento_UrlRewrite
-"You deleted the user.","Du hast den Benutzer gelöscht.",module,Magento_User
+"You deleted the tax rate.","Der Steuersatz wurde gelöscht.",module,Magento_Tax
+"You deleted the theme.","Das Theme wurde gelöscht.",module,Magento_Theme
+"You deleted the URL rewrite.","Der URL-Rewrite wurde gelöscht",module,Magento_UrlRewrite
+"You deleted the user.","Der Benutzer wurde gelöscht.",module,Magento_User
 "You deleted the website.","Website gelöscht.",module,Magento_Backend
 "You did not email your customer. Please check your email settings.","Du hast deinem Kunden nicht gemailt. Bitte überprüfe deine E-Mail-Einstellungen.",module,Magento_Sales
 "You did not sign in correctly or your account is temporarily disabled.","Du hast dich nicht korrekt eingeloggt oder dein Konto ist vorübergehend deaktiviert."
-"You disabled %1 Catalog Price Rules based on ""%2"" attribute.","Du hast %1 Katalogpreisregeln basierend auf dem ""%2"" Attribut deaktiviert.",module,Magento_CatalogRule
+"You disabled %1 Catalog Price Rules based on ""%2"" attribute.","%1 Katalogpreisregeln basierend auf dem ""%2"" Attribut wurden deaktiviert.",module,Magento_CatalogRule
 "You don't have the correct permissions to assign the customer to the cart.","Du hast nicht die richtigen Berechtigungen, um den Kunden dem Warenkorb zuzuordnen.",module,Magento_Quote
 "You don't need to select a shipping address.","Du brauchst keine Versandadresse auswählen.",module,Magento_Sales
 "You don't need to select a shipping method.","Du brauchst keine Versandmethode auswählen.",module,Magento_Sales
 "You don’t have permission to perform this operation. Selected reviews must be in Pending Status only.","Du hast keine Erlaubnis, diese Operation durchzuführen. Ausgewählte Rezensionen dürfen sich nur im Status Ausstehend befinden.",module,Magento_Review
 "You don’t have permission to perform this operation. The selected review must be in Pending Status.","Du hast keine Erlaubnis, diese Operation durchzuführen. Die ausgewählte Überprüfung muss sich im Status Ausstehend befinden.",module,Magento_Review
-"You duplicated the block.","Du hast den Block dupliziert.",module,Magento_Cms
-"You duplicated the page.","Du hast die Seite dupliziert.",module,Magento_Cms
-"You duplicated the product.","Du hast das Produkt dupliziert.",module,Magento_Catalog
+"You duplicated the block.","Der Block wurde dupliziert.",module,Magento_Cms
+"You duplicated the page.","Die Seite wurde dupliziert.",module,Magento_Cms
+"You duplicated the product.","Das Produkt wurde dupliziert.",module,Magento_Catalog
 "You entered an invalid Secret Key. Please refresh the page.","Du hast einen ungültigen Geheimschlüssel eingegeben. Bitte aktualisiere die Seite",module,Magento_Backend
 "You entered incorrect data. Please try again.","Du hast falsche Daten eingegeben. Bitte versuche es erneut.",module,Magento_Sales
-"You flushed the cache storage.","Du hast den Cache-Speicher geleert.",module,Magento_Backend
+"You flushed the cache storage.","Der Cache-Speicher wurde geleert.",module,Magento_Backend
 "You have %1 new system message","Du hast %1 neue Systemnachricht",module,Magento_AdminNotification
 "You have %1 new system messages","Du hast %1 neue Systemmeldungen",module,Magento_AdminNotification
 "You have been successfully subscribed to our newsletter.","Du hast dich erfolgreich für unseren Newsletter angemeldet.",module,Magento_Newsletter
@@ -10072,23 +10072,23 @@ Yes/No,Ja/Nein,module,Magento_Eav
 "You have not set a default billing address.","Du hast keine Standardrechnungsadresse angegeben.",module,Magento_Customer
 "You have not set a default shipping address.","Du hast keine Standardversandadresse angegeben.",module,Magento_Customer
 "You have placed no orders.","Du hast keine Bestellungen aufgegeben.",module,Magento_OrderCancellationUi
-"You have put %1 order(s) on hold.","Du hast %1 Bestellung(en) auf Wartestellung gesetzt.",module,Magento_Sales
-"You have revoked the customer's tokens.","Du hast die Tokens des Kunden widerrufen.",module,Magento_Customer
-"You have revoked the user's tokens.","Du hast die Tokens des Benutzers aufgehoben.",module,Magento_User
+"You have put %1 order(s) on hold.","%1 Bestellung(en) wurde(n) auf Wartestellung gesetzt.",module,Magento_Sales
+"You have revoked the customer's tokens.","Die Tokens des Kunden wurden widerrufen.",module,Magento_Customer
+"You have revoked the user's tokens.","Die Tokens des Benutzers wurden aufgehoben.",module,Magento_User
 "You have signed out and will go to our homepage in 5 seconds.","Du wurdest ausgeloggt und wirst in 5 Sekunden auf unsere Homepage geleitet.",module,Magento_Customer
 "You have submitted no reviews.","Du hast noch keine Bewertungen abgegeben",module,Magento_Review
-"You have successfully created the folder.","Du hast den Ordner erfolgreich erstellt.",module,Magento_MediaGalleryUi
-"You have successfully downloaded the image.","Du hast das Bild erfolgreich heruntergeladen.",module,Magento_AdobeStockImageAdminUi
-"You have successfully downloaded the licensed image.","Du hast das lizenzierte Bild erfolgreich heruntergeladen.",module,Magento_AdobeStockImageAdminUi
-"You have successfully removed the folder.","Du hast den Ordner erfolgreich entfernt.",module,Magento_MediaGalleryUi
-"You have successfully removed the images.","Du hast die Bilder erfolgreich entfernt.",module,Magento_MediaGalleryUi
-"You have successfully saved the image ""%image""","Du hast das Bild ""%image"" erfolgreich gespeichert",module,Magento_MediaGalleryUi
+"You have successfully created the folder.","Der Ordner wurde erfolgreich erstellt.",module,Magento_MediaGalleryUi
+"You have successfully downloaded the image.","Das Bild wurde erfolgreich heruntergeladen.",module,Magento_AdobeStockImageAdminUi
+"You have successfully downloaded the licensed image.","Das lizenzierte Bild wurde erfolgreich heruntergeladen.",module,Magento_AdobeStockImageAdminUi
+"You have successfully removed the folder.","Der Ordner wurde erfolgreich entfernt.",module,Magento_MediaGalleryUi
+"You have successfully removed the images.","Die Bilder wurden erfolgreich entfernt.",module,Magento_MediaGalleryUi
+"You have successfully saved the image ""%image""","Das Bild ""%image"" wurde erfolgreich gespeichert",module,Magento_MediaGalleryUi
 "You have successfully saved your edits.","Deine Änderungen wurden erfolgreich gespeichert.",module,Magento_Ui
 "You have to select at least one Two-Factor Authorization provider","Du musst mindestens einen Anbieter für die Zwei-Faktor-Authentifizierung auswählen",module,Magento_TwoFactorAuth
-"You have unassigned the order status.","Du hast die Zuweisung des Auftragsstatus aufgehoben.",module,Magento_Sales
+"You have unassigned the order status.","Die Zuweisung des Auftragsstatus wurde aufgehoben.",module,Magento_Sales
 "You have viewed and resolved all recent system notices. Please refresh the web page to clear the notice alert.","Du hast alle aktuellen Systemmeldungen eingesehen und gelöst. Bitte aktualisiere die Webseite, um die Benachrichtigung zu löschen.",module,Magento_AdminNotification
 "You haven't selected any items!","Du hast nichts ausgewählt!",module,Magento_Ui
-"You moved the category.","Du hast die Kategorie verschoben.",module,Magento_Catalog
+"You moved the category.","Die Kategorie wurde verschoben.",module,Magento_Catalog
 "You must confirm your %customer_email email before you can sign in (link is only valid once):","Du musst deine %customer_email Email bestätigen, bevor du dich einloggst (Link ist nur einmal gültig):",module,Magento_Customer
 "You must confirm your account. Please check your email for the confirmation link or <a href=""%1"">click here</a> for a new link.","Du musst dein Konto bestätigen. Bitte überprüfe dein E-Mail-Postfach für den Bestätigungslink oder <a href=""%1"">klicke hier</a> für einen neuen Link.",module,Magento_Checkout
 "You must first configure currency options before being able to see currency rates.","Du musst zuerst Währungsoptionen konfigurieren, um die Währungsraten zu sehen.",module,Magento_CurrencySymbol
@@ -10111,58 +10111,58 @@ Yes/No,Ja/Nein,module,Magento_Eav
 "You need to select at least one image","Du musst mindestens ein Bild auswählen",module,Magento_MediaGalleryUi
 "You need to verify identity in order to proceed to configure new Two-Factor Authorization","Du musst deine Identität bestätigen, um eine neue Zwei-Faktor-Authentifizierung zu konfigurieren",module,Magento_TwoFactorAuth
 "You need to verify identity in order to proceed to configure new Two-Factor Authorization for %store","Du musst deine Identität bestätigen, um eine neue Zwei-Faktor-Authentifizierung für %store zu konfigurieren",module,Magento_TwoFactorAuth
-"You notified customer about creditmemo #%1.","Du hast deinen Kunden über die Gutschrift #%1 informiert.",module,Magento_Paypal
-"You notified customer about invoice #%1.","Du hast deinen Kunden über die Rechnung #%1 informiert.",module,Magento_Paypal
-"You put the order on hold.","Du hast die Bestellung auf Wartestellung gesetzt.",module,Magento_Sales
-"You refreshed lifetime statistics.","Du hast die Gesamtstatistik aktualisiert.",module,Magento_Reports
-"You released the order from holding status.","Du hast die Bestellung von der Wartestellung freigegeben.",module,Magento_Sales
-"You removed product %1 from the comparison list.","Du hast das Produkt %1 aus der Vergleichsliste entfernt.",module,Magento_Catalog
-"You saved the account information.","Du hast die Kontoinformationen gespeichert.",module,Magento_Customer
-"You saved the account.","Du hast das Konto gespeichert.",module,Magento_Backend
-"You saved the address.","Du hast die Adresse gespeichert.",module,Magento_Customer
-"You saved the alert subscription.","Du hast das Benachrichtigungsabonnement gespeichert.",module,Magento_ProductAlert
-"You saved the attribute set.","Du hast das Attributset gespeichert.",module,Magento_Catalog
-"You saved the block.","Du hast den Block gespeichert.",module,Magento_Cms
-"You saved the category.","Du hast die Kategorie gespeichert.",module,Magento_Catalog
-"You saved the condition.","Du hast die Bedingung gespeichert.",module,Magento_CheckoutAgreements
-"You saved the configuration.","Du hast die Konfiguration gespeichert.",module,Magento_Config
-"You saved the custom variable.","Du hast die benutzerdefinierte Variable gespeichert.",module,Magento_Variable
-"You saved the customer group.","Du hast die Kundengruppe gespeichert.",module,Magento_Customer
-"You saved the customer.","Du hast den Kunden gespeichert.",module,Magento_Customer
-"You saved the design change.","Du hast die Shopdesignänderung gespeichert.",module,Magento_Backend
-"You saved the email template.","Du hast die E-Mail-Vorlage gespeichert.",module,Magento_Email
-"You saved the gift card message.","Du hast die Geschenkkartennachricht gespeichert.",module,Magento_Sales
+"You notified customer about creditmemo #%1.","Der Kunde wurde über die Gutschrift #%1 informiert.",module,Magento_Paypal
+"You notified customer about invoice #%1.","Der Kunde wurde über die Rechnung #%1 informiert.",module,Magento_Paypal
+"You put the order on hold.","Die Bestellung wurde auf Wartestellung gesetzt.",module,Magento_Sales
+"You refreshed lifetime statistics.","Die Gesamtstatistik wurde aktualisiert.",module,Magento_Reports
+"You released the order from holding status.","Die Bestellung wurde von der Wartestellung freigegeben.",module,Magento_Sales
+"You removed product %1 from the comparison list.","Das Produkt %1 wurde aus der Vergleichsliste entfernt.",module,Magento_Catalog
+"You saved the account information.","Die Kontoinformationen wurden gespeichert.",module,Magento_Customer
+"You saved the account.","Das Konto wurde gespeichert.",module,Magento_Backend
+"You saved the address.","Die Adresse wurde gespeichert.",module,Magento_Customer
+"You saved the alert subscription.","Das Benachrichtigungsabonnement wurde gespeichert.",module,Magento_ProductAlert
+"You saved the attribute set.","Das Attributset wurde gespeichert.",module,Magento_Catalog
+"You saved the block.","Der Block wurde gespeichert.",module,Magento_Cms
+"You saved the category.","Die Kategorie wurde gespeichert.",module,Magento_Catalog
+"You saved the condition.","Die Bedingung wurde gespeichert.",module,Magento_CheckoutAgreements
+"You saved the configuration.","Die Konfiguration wurde gespeichert.",module,Magento_Config
+"You saved the custom variable.","Die benutzerdefinierte Variable wurde gespeichert.",module,Magento_Variable
+"You saved the customer group.","Die Kundengruppe wurde gespeichert.",module,Magento_Customer
+"You saved the customer.","Der Kunde wurde gespeichert.",module,Magento_Customer
+"You saved the design change.","Die Shopdesignänderung wurde gespeichert.",module,Magento_Backend
+"You saved the email template.","Die E-Mail-Vorlage wurde gespeichert.",module,Magento_Email
+"You saved the gift card message.","Die Geschenkkartennachricht wurde gespeichert.",module,Magento_Sales
 "You saved the newsletter queue.","Die Newsletter-Warteschlange wurde gespeichert.",module,Magento_Newsletter
-"You saved the order status.","Du hast den Bestellstatus gespeichert.",module,Magento_Sales
-"You saved the page.","Du hast die Seite gespeichert.",module,Magento_Cms
+"You saved the order status.","Der Bestellstatus wurde gespeichert.",module,Magento_Sales
+"You saved the page.","Die Seite wurde gespeichert.",module,Magento_Cms
 "You saved the product attribute.","Das Produktattribut wurde gespeichert.",module,Magento_Catalog
-"You saved the product.","Du hast das Produkt gespeichert.",module,Magento_Catalog
-"You saved the rating.","Du hast die Bewertung gespeichert.",module,Magento_Review
-"You saved the review.","Du hast die Bewertung gespeichert.",module,Magento_Review
-"You saved the role.","Du hast die Rolle gespeichert.",module,Magento_User
-"You saved the rule.","Du hast die Regel gespeichert",module,Magento_CatalogRule
-"You saved the search term.","Du hast den Suchbegriff gespeichert.",module,Magento_Search
-"You saved the sitemap.","Du hast die Sitemap gespeichert.",module,Magento_Sitemap
+"You saved the product.","Das Produkt wurde gespeichert.",module,Magento_Catalog
+"You saved the rating.","Die Bewertung wurde gespeichert.",module,Magento_Review
+"You saved the review.","Die Bewertung wurde gespeichert.",module,Magento_Review
+"You saved the role.","Die Rolle wurde gespeichert.",module,Magento_User
+"You saved the rule.","Die Regel wurde gespeichert",module,Magento_CatalogRule
+"You saved the search term.","Der Suchbegriff wurde gespeichert.",module,Magento_Search
+"You saved the sitemap.","Die Sitemap wurde gespeichert.",module,Magento_Sitemap
 "You saved the store view.","Store View gespeichert.",module,Magento_Backend
 "You saved the store.","Shop gespeichert.",module,Magento_Backend
 "You saved the synonym group.","Synonymgruppe gespeichert.",module,Magento_Search
-"You saved the tax rate.","Du hast den Steuersatz gespeichert.",module,Magento_Tax
-"You saved the tax rule.","Du hast die Steuerregel gespeichert.",module,Magento_Tax
-"You saved the theme.","Du hast das Theme gespeichert.",module,Magento_Theme
-"You saved the user.","Du hast den Benutzer gespeichert.",module,Magento_User
+"You saved the tax rate.","Der Steuersatz wurde gespeichert.",module,Magento_Tax
+"You saved the tax rule.","Die Steuerregel wurde gespeichert.",module,Magento_Tax
+"You saved the theme.","Das Theme wurde gespeichert.",module,Magento_Theme
+"You saved the user.","Der Benutzer wurde gespeichert.",module,Magento_User
 "You saved the website.","Website gespeichert.",module,Magento_Backend
 "You selected <strong>%count</strong> products for this bulk operation.","Du hast <strong>%count</strong> Produkte für diese Massenoperation ausgewählt.",module,Magento_InventoryCatalogAdminUi
 "You selected an invalid queue.","Du hast eine ungültige Warteschlange ausgewählt.",module,Magento_Newsletter
-"You sent the message.","Du hast die Nachricht versendet.",module,Magento_Sales
-"You sent the order email.","Du hast die Bestellung per E-Mail versendet.",module,Magento_Sales
-"You sent the shipment.","Du hast die Sendung verschickt.",module,Magento_Shipping
+"You sent the message.","Die Nachricht wurde versendet.",module,Magento_Sales
+"You sent the order email.","Die Bestellung wurde per E-Mail versendet.",module,Magento_Sales
+"You sent the shipment.","Die Sendung wurde verschickt.",module,Magento_Shipping
 "You should select one or more items to ship.","Du solltest einen oder mehrere Artikel für den Versand auswählen.",module,Magento_InventoryShippingAdminUi
 "You submitted your review for moderation.","Deine Bewertung wurde zur Prüfung übermittelt. Vielen Dank!",module,Magento_Review
 "You unsubscribed.","Du hast dich abgemeldet.",module,Magento_Newsletter
-"You updated the order address.","Du hast die Bestelladresse aktualisiert.",module,Magento_Sales
-"You updated your password.","Du hast dein Passwort aktualisiert.",module,Magento_Customer
+"You updated the order address.","Die Bestelladresse wurde aktualisiert.",module,Magento_Sales
+"You updated your password.","Dein Passwort wurde aktualisiert.",module,Magento_Customer
 "You used coupon code ""%1"".","Der Gutscheincode ""%1"" wurde angewendet.",module,Magento_Checkout
-"You voided the credit memo.","Du hast die Gutschrift storniert.",module,Magento_Sales
+"You voided the credit memo.","Die Gutschrift wurde storniert.",module,Magento_Sales
 "You will be charged for","Es werden dir folgende Kosten in Rechnung gestellt",module,Magento_Tax
 "You will be charged tax.","Es werden Steuern erhoben.",module,Magento_Customer
 "You will be redirected to the payment system website.","Du wirst zur Zahlungssystem-Webseite umgeleitet.",module,Magento_Paypal
