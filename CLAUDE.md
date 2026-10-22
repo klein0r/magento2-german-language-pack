@@ -139,11 +139,39 @@ When a phrase is not clearly covered by reasons 1 to 5, translate it or ask.
 2. Only consider core contexts: `module` with `Magento_*` or `PayPal_*`, `lib`, and `theme` with `Magento/*`. Filter out custom modules and third-party extensions.
 3. Determine missing keys, i.e. phrases without an entry in `de_DE.csv`. Because identical entries are not kept in the file, this list also contains every phrase that was reviewed earlier and deliberately left in English. Review each phrase individually against "Phrases that stay untranslated"; never dismiss them as a group.
 4. Translate according to the rules above. Take the keys exactly as collected (see "Rules for the English key").
-5. Look for obsolete entries: keys that are confirmed neither by `collect-phrases`, nor by an `i18n/en_US.csv` under `vendor/magento`, `vendor/paypal` or `lib`, nor by a literal occurrence (`'…'`, `"…"`, `>…<`) in the core code. Remove unconfirmed texts.
+5. Look for obsolete entries: keys that are confirmed neither by `collect-phrases`, nor by an `i18n/en_US.csv` under `vendor/magento`, `vendor/paypal` or `lib`, nor by a literal occurrence in a translated context (see "Literal occurrences"). Remove unconfirmed texts.
 6. Rewrite the file (sorted, deduplicated) and verify it.
 7. Update `README.md` if the supported version changes.
 
 `collect-phrases` does not find everything. Texts from data patches (e.g. attribute labels) or from `en_US.csv` are still translated at runtime. So always check all three sources from step 5 before treating an entry as obsolete.
+
+### Literal occurrences
+
+A literal search (`'…'`, `"…"`, `>…<` in `*.php`, `*.phtml`, `*.js`, `*.html`, `*.xml`, `*.graphqls` under `vendor/magento`, `vendor/paypal` and `lib`) finds many strings that Magento never translates. A literal hit only confirms an entry if Magento passes that occurrence through the translator. Check every hit individually.
+
+Counts as confirmation (translated at runtime):
+
+- EAV attribute definitions in `Setup/` and `Setup/Patch/Data/`: `'label'`, `'note'` and attribute group names
+- `label` in `etc/product_types.xml`, `etc/email_templates.xml`, `etc/import.xml`, `etc/export.xml`
+- `title` in `etc/adminhtml/menu.xml` and `etc/acl.xml`, `label` of layout handles (`<page label="…">`)
+- `<label>`, `<item name="…Label">` and similar texts in `view/*/ui_component/*.xml`
+- `<label>`/`<comment>` in `etc/adminhtml/system.xml`
+- JS and HTML templates: `$t()`, `$.mage.__()`, `_t()`, `i18n:`, `<!-- ko i18n: … -->`, and PHP `$this->translate()`
+
+Does **not** count as confirmation:
+
+- Column comments in `etc/db_schema.xml` (`comment="…"`)
+- Default values in `etc/config.xml`
+- PHP constants, `case` labels, array keys and values that are compared or sent to an API (`'authorize'`, `'Failed'`, `'Taxable Goods'`)
+- Strings passed into a message as a value instead of being translated themselves (`$label = 'Expiration date'; __('"%1" must be …', $label)`)
+- Exception texts without `__()` (`new \DomainException('…')`), `setPageTitle('…')` without `__()`
+- Variable descriptions in email templates (`{{var …}}` comments such as `"var order.increment_id":"Order Id"`)
+- Docblocks and code comments, GraphQL `@doc(description: …)`
+- Parts of a longer string (`<span class="label">Order Date:</span> %1`)
+- Tests, fixtures and generators: `Test/`, `dev/tests/`, `setup/src/Magento/Setup/Fixtures`, `FixtureGenerator`, `magento2-functional-testing-framework`, `php-compatibility-fork`
+- Third-party libraries with their own i18n or none at all: `lib/web/hugerte`, `lib/web/css/docs`, `lib/web/jquery`, `*.min.js`, `legacy-build`, `moment.js`
+
+When in doubt, read the surrounding code and check whether the string reaches `__()`, `$t()` or a mechanism listed above.
 
 ## Verification
 
