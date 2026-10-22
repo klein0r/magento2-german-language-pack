@@ -113,12 +113,31 @@ The existing entries are not consistent everywhere. New translations use these t
 | Pickup Location | Abholort |
 | Pay Later | Später bezahlen |
 
+## Phrases that stay untranslated
+
+A core phrase may stay without an entry only for one of these reasons. Every untranslated phrase must be assigned to one of them individually.
+
+1. **Brand, product or service name**: see the brand list under "Keep unchanged", including carrier rates and packaging names (`UPS Next Day Air`, `Priority Mail Flat Rate Envelope`) and payment products (`Payflow Pro`, `Express Checkout`).
+2. **Established technical term or abbreviation**: see the list under "Keep unchanged", plus units (`cm`, `kg`, `px`) and formats (`CSV`, `Excel XML`).
+3. **Identical German word**: the English word is also the correct German term in that UI context (`Status`, `Name`, `Newsletter`, `Export`, `Filter`, `Position`, `Layout`, `Online`). It must be the term a German UI would actually use. If a native German term is common, translate (`Home` → „Startseite", `Login` → „Anmelden", `Download` → „Herunterladen").
+4. **Junk**: code fragments, test strings, internal keys and plain numbers, as listed under "Do not include".
+5. **Own module translation**: a core module ships its own `i18n/de_DE.csv` for the phrase.
+
+These are **not** valid reasons:
+
+- The phrase was identical in a previous version of this pack or in another language pack.
+- The key is multi-line, indented, long, or contains HTML.
+- The text is only visible in the admin, or only in error messages.
+- The key looks odd but is not one of the junk categories.
+
+When a phrase is not clearly covered by reasons 1 to 5, translate it or ask.
+
 ## New Magento version: procedure
 
 1. In a Magento installation of the new version, collect the phrases:
    `php -d memory_limit=-1 bin/magento i18n:collect-phrases -m -o phrases.csv`
 2. Only consider core contexts: `module` with `Magento_*` or `PayPal_*`, `lib`, and `theme` with `Magento/*`. Filter out custom modules and third-party extensions.
-3. Determine missing keys, i.e. phrases without an entry in `de_DE.csv`. Sort out junk, brand names without a translation, and texts that have their own module `de_DE.csv`.
+3. Determine missing keys, i.e. phrases without an entry in `de_DE.csv`. Because identical entries are not kept in the file, this list also contains every phrase that was reviewed earlier and deliberately left in English. Review each phrase individually against "Phrases that stay untranslated"; never dismiss them as a group.
 4. Translate according to the rules above. Take the keys exactly as collected (see "Rules for the English key").
 5. Look for obsolete entries: keys that are confirmed neither by `collect-phrases`, nor by an `i18n/en_US.csv` under `vendor/magento`, `vendor/paypal` or `lib`, nor by a literal occurrence (`'…'`, `"…"`, `>…<`) in the core code. Remove unconfirmed texts.
 6. Rewrite the file (sorted, deduplicated) and verify it.
@@ -136,6 +155,7 @@ After every change to `de_DE.csv`:
 - No translation contains line breaks if the key contains none.
 - No translation uses the formal address (`Sie`, `Ihr…`, `Ihnen` as a form of address).
 - No existing English key was changed unintentionally (compare the set of keys before and after).
+- Every core phrase without an entry is assigned to one of the reasons under "Phrases that stay untranslated". Report the count per reason, and list every untranslated phrase that is visible in the storefront explicitly.
 - For multi-line or unusual keys: check against the runtime string, e.g. via `Magento\Config\Model\Config\Structure\Data` for `system.xml` texts.
 
 ## Working style

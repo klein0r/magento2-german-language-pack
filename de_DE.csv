@@ -136,6 +136,12 @@
                     Nutzungsbeschränkung wird nur für eingeloggte Kunden durchgesetzt.
                 ",module,Magento_SalesRule
 "    All Store Views","    Alle Store Views",module,Magento_Search
+" - This button is responsible to set recommended default values to all the
+            buttons and pay later messaging for all the Buttons types and locations."," - Dieser Button setzt alle Buttons und ""Später bezahlen""-Nachrichten für alle Button-Typen und Orte auf die empfohlenen Standardwerte zurück.",module,PayPal_Braintree
+" - This button is responsible to store selected styling field of
+            buttons and pay later messaging for the current location and current button type"," - Dieser Button speichert die ausgewählten Stil-Einstellungen der Buttons und der ""Später bezahlen""-Nachrichten für den aktuellen Ort und den aktuellen Button-Typ",module,PayPal_Braintree
+" - This button is responsible to store selected styling field of
+            buttons and pay later messaging values for all the Buttons types and locations."," - Dieser Button speichert die ausgewählten Stil-Einstellungen der Buttons und der ""Später bezahlen""-Nachrichten für alle Button-Typen und Orte.",module,PayPal_Braintree
 " [deleted]"," [gelöscht]",module,Magento_Backend
 " Copy"," Kopie",module,Magento_Newsletter
 " Example: "," Beispiel: ",module,Magento_Checkout
@@ -387,6 +393,7 @@
 "10 by default. Max - 10000","10 standardmäßig. Max - 1000000",module,Magento_Wishlist
 "10 is the highest priority/heaviest weighting.","10 ist die höchste Priorität/stärkste Gewichtung.",module,Magento_CatalogSearch
 "12 Hours","12 Stunden",module,Magento_AdminNotification
+"12h AM/PM","12 Std. (AM/PM)",module,Magento_Catalog
 "2 columns with left bar","2 Spalten mit Spalte links",module,Magento_Theme
 "2 columns with right bar","2 Spalten mit rechter Spalte",module,Magento_Theme
 "2 Day","2 Tage",module,Magento_Fedex
@@ -395,6 +402,7 @@
 "2 Hours","2 Stunde",module,Magento_AdminNotification
 "2-pixel perimeter around the header space.","2-Pixel Umfang um den Header.",module,Magento_Paypal
 "24 Hours","24 Stunden",module,Magento_AdminNotification
+24h,"24 Std.",module,Magento_Catalog
 "255 by default. Max - 10000","255 standardmäßig. Maximal - 10000",module,Magento_Wishlist
 "2FA - Duo Security","2FA – Duo Security",module,Magento_TwoFactorAuth
 "2FA - U2F key device registration","2FA – Registrierung des U2F-Schlüssels",module,Magento_TwoFactorAuth
@@ -1386,12 +1394,14 @@ Background,Hintergrund,module,Magento_PageBuilder
 Backordered,Nachbestellt,module,Magento_Sales
 Backorders,Rückstand,module,Magento_Catalog
 "Backorders are disabled","Rückstände sind deaktiviert",module,Magento_InventorySales
+Backup,Sicherung,module,Magento_Backup
 "Backup functionality is disabled","Die Backup-Funktionalität ist deaktiviert.",module,Magento_Backup
 "Backup Name",Backup-Name,module,Magento_Backup
 "Backup Options",Backup-Optionen,module,Magento_Backend
 "Backup options",Backup-Optionen,module,lib/web/mage/adminhtml/backup.js
 "Backup Settings",Backup-Einstellungen,module,Magento_Backup
 "Backup Type",Backup-Typ
+Backups,Sicherungen,module,Magento_Backup
 "Backups directory is not writeable","Backup-Verzeichnis ist schreibgeschützt"
 bad,schlecht,module,Magento_Catalog
 "Bad controller interface for showing product","Falsche Controller-Schnittstelle für Produktansicht",module,Magento_Catalog
@@ -1589,6 +1599,9 @@ by,Von,module,Magento_Rule
 "Can be used only with catalog input type Yes/No (Boolean), Dropdown, Multiple Select and Price.","Kann nur mit den Katalogeingabearten Ja/Nein (Boolean), Dropdown, Mehrfachauswahl und Preis verwendet werden.",module,Magento_LayeredNavigation
 "Can be used only with catalog input type Yes/No, Dropdown, Multiple Select and Price","Kann nur mit der Katalogeingabeart Ja/Nein, Dropdown, Mehrfachauswahl und Preis verwendet werden.",module,Magento_LayeredNavigation
 "Can be used only with catalog input type Yes/No, Dropdown, Multiple Select and Price.","Kann nur mit der Katalogeingabeart Ja/Nein, Dropdown, Mehrfachauswahl und Preis verwendet werden.",module,Magento_LayeredNavigation
+"Can be used only with catalog input type Yes/No, Dropdown, Multiple Select and Price.
+                    <br>Price is not compatible with <b>'Filterable (no results)'</b> option - 
+                     it will make no affect on Price filter.","Kann nur mit den Katalog-Eingabetypen Ja/Nein, Dropdown-Liste, Mehrfachauswahl und Preis verwendet werden.<br>Preis ist nicht mit der Option <b>'Filterbar (ohne Resultate)'</b> kompatibel – sie hat keine Auswirkung auf den Preisfilter.",module,Magento_LayeredNavigation
 "Can not change the visibility of the product with SKU equals ""%1"". URL key ""%2"" for specified store already exists.","Kann die Sichtbarkeit des Produkts nicht ändern, wenn die SKU gleich ""%1"" ist. Der URL-Schlüssel ""%2"" für den angegebenen Store ist bereits vorhanden.",module,Magento_CatalogUrlRewrite
 "Can not delete link related to Default Source or Default Stock","Der Link, der sich auf die Standardquelle oder den Standardbestand bezieht, kann nicht gelöscht werden.",module,Magento_InventoryCatalog
 "Can not find original authorization transaction for partial capture","Kann ursprüngliche Autorisierungstransaktion für Teilerfassung nicht finden."
@@ -2822,6 +2835,7 @@ description,Beschreibung,module,Magento_Widget
 "Design params must be set before calling this method","Design-Parameter muss vor dem Aufrufen dieser Methode festgelegt werden",module,Magento_Email
 "Design Rule",Design-Regel,module,Magento_Backend
 "Design Section","Abschnitt Design",module,Magento_Config
+"Design Theme",Design-Theme,module,Magento_Config
 "Destination file is not writable","Die Zieldatei ist nicht beschreibbar.",module,Magento_ImportExport
 "Destination folder is not writable or does not exists.","Zielordner ist nicht verfügbar oder existiert nicht.",module,Magento_Customer
 "Destination Path is too long; must be %1 characters or less","Der Zielpfad ist zu lang; er darf höchstens %1 Zeichen lang sein",module,Magento_AdobeStockImage
@@ -2881,6 +2895,7 @@ Display,Anzeigen,module,Magento_Paypal
 "Display a Link to Loading a Spreadsheet","Zeige einen Link zum Laden eines Spreadsheet an",module,Magento_Widget
 "Display Actual Price","Derzeitigen Preis anzeigen",module,Magento_Msrp
 "Display at Start of Checkout","Zu Beginn des Checkouts anzeigen",module,PayPal_Braintree
+"Display Billing Address On","Rechnungsadresse anzeigen auf",module,Magento_Checkout
 "Display Cart Summary","Einkaufswagen-Zusammenfassung anzeigen",module,Magento_Checkout
 "Display Category Filter","Kategoriefilter anzeigen",module,Magento_Catalog
 "Display default currency",Standardanzeigewährung,module,Magento_Config
@@ -2958,6 +2973,7 @@ Done.,Erledigt.
 Dotted,Gepunktet,module,Magento_PageBuilder
 Double,Doppelt,module,Magento_PageBuilder
 "Double click on a group to rename it.","Doppelklicke auf eine Gruppe, um sie umzubenennen.",module,Magento_Catalog
+Download,Herunterladen,module,Magento_Customer
 download,"Download starten",module,Magento_Downloadable
 "Download CSS File","CSS-Datei herunterladen",module,Magento_Theme
 "Download full report","Download des vollständigen Berichts",module,Magento_ImportExport
@@ -2989,6 +3005,12 @@ dummy,Dummy
 Duration:,Dauer:,module,Magento_ProductVideo
 Dynamic,Dynamisch,module,Magento_Bundle
 "Dynamic Descriptors","Dynamische Bezeichner",module,PayPal_Braintree
+"Each type of goods in the shipment under certain value or less according to the
+                        <a href=""%1"" target=""_blank"">Schedule B Export Codes</a>
+                        and the shipment must not require an export license. If any item exceeds this value,
+                        an export license is required. A shipment (regardless of value) is going to Canada and does not
+                        require an export license. Users may enter <b>%2</b> in the AESITN field if the shipment value
+                        meets the exemption criteria. Please contact USPS for more information.","Jede Warenart in der Sendung liegt laut den <a href=""%1"" target=""_blank"">Schedule B Export Codes</a> unter einem bestimmten Wert, und die Sendung erfordert keine Ausfuhrgenehmigung. Überschreitet ein Artikel diesen Wert, ist eine Ausfuhrgenehmigung erforderlich. Eine Sendung nach Kanada (unabhängig vom Wert) erfordert keine Ausfuhrgenehmigung. Wenn der Sendungswert die Befreiungskriterien erfüllt, kannst du im Feld AESITN <b>%2</b> eingeben. Weitere Informationen erhältst du bei USPS.",module,Magento_Usps
 "EAV types and attributes","EAV-Typen und -Attribute",module,Magento_Eav
 "eBay Auction Payment",eBay-Auktions-Zahlung,module,Magento_Paypal
 Edit,Bearbeiten,module,Magento_Backend
@@ -3080,6 +3102,7 @@ edit,bearbeiten,module,Magento_Checkout
 "Elasticsearch HTTP Username","Elasticsearch HTTP Benutzername",module,Magento_Elasticsearch8
 "Elasticsearch Index Prefix","Elasticsearch Index Präfix",module,Magento_Elasticsearch8
 "Elasticsearch Server Hostname","Elasticsearch  Server Hostname",module,Magento_Elasticsearch8
+"Elasticsearch Server Port","Port des Elasticsearch-Servers",module,Magento_Elasticsearch8
 "Elasticsearch Server Timeout","Elasticsearch Server Zeitüberschreitung",module,Magento_Elasticsearch8
 "Elektronisches Lastschriftverfahren - German ELV","Elektronisches Lastschriftverfahren - Deutsch ELV",module,Magento_Paypal
 "Elektronisches Lastschriftverfahren – German ELV","Elektronisches Lastschriftverfahren – ELV",module,PayPal_Braintree
@@ -3448,6 +3471,7 @@ Explanation,Erklärung,module,Magento_Shipping
 "Exported %1 rows.","Exportierte %1 Zeilen.",module,Magento_ImportExport
 "Express Checkout and Order have been canceled.","Express Checkout und Bestellung wurden storniert.",module,Magento_Paypal
 "Express Checkout has been canceled.","Express Checkout wurde abgebrochen.",module,Magento_Paypal
+Extensions,Erweiterungen,module,Magento_Integration
 "Extensions and Themes are an essential component of the Magento Ecosystem. Please visit the Magento Marketplace to see the latest innovations that developers have created to enhance your Magento Store.","Extensions und Themes sind ein wesentlicher Bestandteil des Magento-Ökosystems. Bitte besuche den Magento-Marktplatz, um die neuesten Innovationen zu sehen, die Entwickler geschaffen haben, um deinen Magento-Shop zu verbessern .",module,Magento_Marketplace
 Fade,Überblenden,module,Magento_PageBuilder
 "Fail to get authentication data.","Die Authentifizierungsdaten konnten nicht abgerufen werden.",module,Magento_LoginAsCustomer
@@ -3602,6 +3626,7 @@ Flat,Pauschal,module,Magento_Usps
 "Flush Cache Storage","Cache-Speicher leeren",module,Magento_Backend
 "Flush Catalog Images Cache","Katalogbilder-Cache leeren",module,Magento_Backend
 "Flush JavaScript/CSS Cache","Javascript/CSS-Cache leeren",module,Magento_Backend
+"Flush Js/Css","JS/CSS-Cache leeren",module,Magento_Backend
 "Flush Magento Cache","Magento-Cache leeren",module,Magento_Backend
 "Flush Static Files","Statische Dateien leeren",module,Magento_Backend
 "Flush Static Files Cache","Cache statischer Dateien leeren",module,Magento_Backend
@@ -3709,6 +3734,7 @@ Funding,Finanzierung,module,Magento_Paypal
 Gallery,Galerie,module,Magento_Catalog
 "Gateway REST URL",Gateway-REST-URL,module,Magento_Ups
 "Gateway URL",Gateway-URL,module,Magento_Ups
+"Gateway XML URL",Gateway-XML-URL,module,Magento_Ups
 Gender,Geschlecht,module,Magento_Customer
 General,Allgemein,module,Magento_Backend
 "General (Authorization)","Allgemein (Autorisierung)",module,Magento_Paypal
@@ -3917,6 +3943,7 @@ Hits,Zugriffe,module,Magento_Search
 Hold,"In Wartestellung setzen",module,Magento_Sales
 hold,"In Wartestellung setzen",module,Magento_Sales
 "Hold for Dispute Investigation","Halten für Streit-Untersuchungen",module,Magento_Paypal
+Home,Startseite,module,Magento_Backend
 "Home Delivery",Hauszustellung,module,Magento_Fedex
 "Home Goods and Furniture","Haushaltswaren und Möbel",module,Magento_Analytics
 "Home Improvement",Heimwerkerbedarf,module,Magento_Analytics
@@ -3936,6 +3963,7 @@ Hours,Stunden
 "HTML tags are not allowed.","HTML-Tags sind nicht erlaubt.",module,lib/web/mage/validation.js
 "HTTP (unsecure)","HTTP (unsicher)",module,Magento_Config
 HTTP_REFERER,HTTP_REFERERER
+"Hub ID",Hub-ID,module,Magento_Fedex
 "Hydrator %1 configured for resolver %2 must implement %3.","Der für den Resolver %2 konfigurierte Hydrator %1 muss %3 implementieren.",module,Magento_GraphQlResolverCache
 "I accept","Ich akzeptiere",module,Magento_PaymentServicesPaypal
 "I am authorized to accept these terms on behalf of my organization.","ich berechtigt bin, diese Bedingungen im Namen meiner Organisation zu akzeptieren.",module,Magento_PaymentServicesPaypal
@@ -4040,6 +4068,7 @@ Images,Bilder,module,Magento_Backend
 "Images file directory is outside required directory","Das Verzeichnis für Bilddateien liegt außerhalb des erforderlichen Verzeichnisses",module,Magento_ImportExport
 "Images should be optimized based on query parameters by your CDN or web server. Use the legacy mode for backward compatibility. <a href=""https://experienceleague.adobe.com/docs/commerce-admin/config/general/web.html"">Learn more</a> about catalog URL formats.<br/><br/><strong style=""color:red"">Warning!</strong> If you switch back to legacy mode, you must <a href=""https://developer.adobe.com/commerce/frontend-core/guide/themes/configure/#resize-catalog-images"">use the CLI to regenerate images</a>.","Bilder sollten von deinem CDN oder Webserver anhand von Query-Parametern optimiert werden. Verwende den Legacy-Modus für Abwärtskompatibilität. <a href=""https://experienceleague.adobe.com/docs/commerce-admin/config/general/web.html"">Erfahre mehr</a> über Katalog-URL-Formate.<br/><br/><strong style=""color:red"">Warnung!</strong> Wenn du zum Legacy-Modus zurückwechselst, musst du <a href=""https://developer.adobe.com/commerce/frontend-core/guide/themes/configure/#resize-catalog-images"">die Bilder per CLI neu generieren</a>.",module,Magento_Catalog
 "Images Upload Configuration","Bilder Upload Konfiguration",module,Magento_Backend
+Import,Importieren,module,Magento_Catalog
 "Import and Export Tax Rates","Steuersätze importieren/exportieren",module,Magento_TaxImportExport
 "Import Behavior",Importverhalten,module,Magento_ImportExport
 "Import data validation is complete.","Importdaten-Überprüfung ist abgeschlossen.",module,Magento_ImportExport
@@ -4416,6 +4445,7 @@ Invoices,Rechnungen,module,Magento_Sales
 "IP Address",IP-Adresse,module,Magento_Reports
 "IPN ""%1"". %2 Transaction amount %3. Transaction ID: ""%4""","IPN ""%1"". %2 Transaktionsmenge %3. Transaktions-ID: ""%4""",module,Magento_Paypal
 "IPN ""%1"". A dispute has been resolved and closed. %2 Transaction amount %3.","IPN ""%1"" Eine Streitigkeit wurde gelöst und geschlossen. %2 Transaktionsbetrag %3",module,Magento_Paypal
+"IPN ""%1"". Case type ""%2"". Case ID ""%3"" %4","IPN ""%1"". Falltyp ""%2"". Fall-ID ""%3"" %4",module,Magento_Paypal
 "IPN ""Refunded"". Refund issued by merchant. Registered notification about refunded amount of %1. Transaction ID: ""%2"". Credit Memo has not been created. Please create offline Credit Memo.","IPN ""Erstattet"". Erstattung vom Händler ausgestellt. Registrierte Benachrichtigung über erstattete Menge von %1. Transaktions-ID: ""%2"". Gutschrift wurde noch nicht erstellt. Bitte erstelle eine Offline-Gutschrift.",module,Magento_Sales
 "IPN (Instant Payment Notification) Only","Nur IPN (sofortige Zahlungsbestätigung)",module,Magento_Paypal
 "IPs access list separated with ',' that can purge Varnish configuration for config file generation.
@@ -4638,6 +4668,7 @@ Locked,Gesperrt,module,Magento_Customer
 "Log JS Errors to Session Storage Key","JS-Fehler in Sessionspeicher-Schlüssel loggen",module,Magento_Ui
 "Log out all other sessions","Alle Benutzer Sessions abmelden",module,Magento_Security
 "Logged In",Angemeldet,module,Magento_LoginAsCustomerLog
+Login,Anmelden,module,Magento_Checkout
 "Login as Customer","Als Kunde anmelden",module,Magento_LoginAsCustomerAdminUi
 "Login as Customer assistance is disabled for this Customer.","Die Funktion ""Als Kunde einloggen"" ist für diesen Kunden deaktiviert.",module,Magento_LoginAsCustomerAssistance
 "Login as Customer checkbox tooltip","Tooltip für die Als Kunde einloggen"" Checkbox""",module,Magento_LoginAsCustomerAssistance
@@ -4672,6 +4703,7 @@ Longitude,Längengrad,module,Magento_InventoryAdminUi
 "Low Stock Products","Produkte mit niedrigem Bestand",module,Magento_Catalog
 "Low Stock Report","Bericht über niedrigen Bestand",module,Magento_Reports
 Machinable,Automatisch,module,Magento_Usps
+"Magento Admin Panel",Magento-Admin-Panel,module,Magento_Backend
 "Magento Business Intelligence provides you with a simple and clear path to
                     becoming more data driven.</br> Learn more about <a target=""_blank""
                     href=""https://dashboard.rjmetrics.com/v2/magento/signup/"">Magento BI Essentials and BI Pro</a> tiers.","Magento Business Intelligence bietet dir einen einfachen und klaren Weg um
@@ -4821,6 +4853,7 @@ Media,Medien,module,Magento_MediaGalleryUi
 "Media Image",Medienbild,module,Magento_Catalog
 "Media Storage",Medienspeicher,module,Magento_Cms
 "Medical express","Medical Express",module,Magento_Dhl
+Medium,Mittel,module,Magento_Customer
 "Medium Flat-Rate Box","Mittlere Flat-Rate Box",module,Magento_Usps
 "Memo # %1","Gutschrift # %1",module,Magento_Sales
 "Memo Total",Gutschriftengesamtanzahl,module,Magento_Sales
@@ -5153,6 +5186,7 @@ Next,Weiter,module,Magento_Backend
 "Next Page","Nächste Seite",module,Magento_Backend
 "Next page","Nächste Seite",module,Magento_Backend
 "Next steps","Nächste Schritte",module,Magento_Backend
+Nickname,"Öffentlicher Name",module,Magento_Review
 No,Nein,module,Magento_Backend
 no,Nein
 "No (price without tax)","Nein (Preis ohne Steuer)",module,Magento_Tax
@@ -5615,6 +5649,7 @@ Parcel,Paket,module,Magento_Usps
 "Parent product does not have configurable product options","Das übergeordnete Produkt hat keine konfigurierbaren Produktoptionen"
 "Parent Product Thumbnail",Hauptprodukt-Thumbnail,module,Magento_Catalog
 "Parent shipment cannot be loaded for track object.","Übergeordneter Versand kann für das Trackingobjekt nicht geladen werden.",module,Magento_Sales
+"Parent Theme","Übergeordnetes Theme",module,Magento_Theme
 "Parent Transaction ID","Übergeordnete Transaktions-ID",module,Magento_Sales
 "Part of the address information matched","Teile der Adressinformationen übereinstimmend",module,Magento_Paypal
 Partial,Teilweise,module,Magento_Sales
@@ -5648,6 +5683,7 @@ Path,Pfad,module,Magento_Sitemap
 "Path ""%value%"" is protected and cannot be used.","Pfad ""%value%"" ist geschützt, und kann nicht verwendet werden.",module,Magento_MediaStorage
 "Path ""%value%"" may not include parent directory traversal (""../"", ""..\").","Der Pfad ""%value%"" darf keinen Verweis auf übergeordnete Verzeichnisse (""../"", ""..\") enthalten.",module,Magento_MediaStorage
 "Pattern: %pattern","Muster: %-Muster"
+Pause,Pausieren,module,Magento_Newsletter
 Paused,Angehalten,module,Magento_Customer
 Pay,Bezahlen,module,Magento_PaymentServicesPaypal
 "Pay Later message styles will only take effect after you click 'Save changes' within the configurator modal and also 'Save Config' at the top of this page.","Die Stile für die ""Später bezahlen""-Nachricht werden erst wirksam, nachdem du im Konfigurator auf 'Änderungen speichern' und oben auf dieser Seite auf 'Konfiguration speichern' geklickt hast.",module,Magento_PaymentServicesPaypal
@@ -5725,6 +5761,7 @@ Payment,Zahlung,module,Magento_Checkout
 "Payments Standard",Zahlungsstandard,module,Magento_Paypal
 "PayPal Account","PayPal Konto",module,PayPal_Braintree
 "PayPal All-in-One Payment Solutions&nbsp;&nbsp;<i>Accept and process credit cards and PayPal payments.</i>","PayPal All-in-One-Zahlungslösungen&nbsp;&nbsp;<i>Kreditkarten und PayPal-Zahlungen akzeptieren und bearbeiten.</i>",module,Magento_Paypal
+"PayPal All-in-One Payment Solutions&nbsp;<i>Accept and process credit cards and PayPal payments.</i>","PayPal All-in-One Payment Solutions&nbsp;<i>Kreditkarten- und PayPal-Zahlungen akzeptieren und verarbeiten.</i>",module,Magento_Paypal
 "PayPal Balance Manager function of PayPal account","PayPal Ausgleichs-Manager-Funktion des PayPal-Kontos",module,Magento_Paypal
 "PayPal Billing Agreement Settings",PayPal-Abrechnungsvereinbarungseinstellungen,module,Magento_Paypal
 "PayPal Button",PayPal-Button,module,PayPal_Braintree
@@ -5755,6 +5792,7 @@ Payment,Zahlung,module,Magento_Checkout
 "PayPal gateway has rejected request.","PayPal-Gateway hat Antrag abgelehnt.",module,Magento_Paypal
 "PayPal gateway has rejected request. %1","PayPal-Gateway hat die Anfrage abgelehnt. %1",module,Magento_Paypal
 "PayPal Guest Checkout Credit Card Icons","PayPal Guest Checkout Kreditkartensymbole",module,Magento_Paypal
+"PayPal Logo",PayPal-Logo,module,PayPal_Braintree
 "Paypal Merchant ID",PayPal-Merchant-ID,module,Magento_PaymentServicesPaypal
 "PayPal Merchant Pages Style","PayPal Händler-Seiten-Stil",module,Magento_Paypal
 "PayPal onboarding URL was not returned by the service.","Der Dienst hat keine PayPal-Onboarding-URL zurückgegeben.",module,Magento_PaymentServicesPaypal
@@ -6076,6 +6114,8 @@ Plain,Schlicht,module,Magento_PaymentServicesPaypal
 "Please note that these settings apply to individual items in the cart, not to the entire cart.","Bitte beachte, dass diese Einstellungen für einzelne Artikel im Warenkorb gelten, nicht für den gesamten Warenkorb.",module,Magento_CatalogInventory
 "Please note you will be taken away from the site to update your Google Pay details.","Bitte beachte, dass du zur Aktualisierung deiner Google-Pay-Daten die Website verlässt.",module,PayPal_Braintree
 "Please note you will be taken away from the site to update your PayPal details.","Bitte beachte, dass du zur Aktualisierung deiner PayPal-Daten die Website verlässt.",module,PayPal_Braintree
+"Please note, for reCAPTCHA to be enabled,
+        the valid ""Google API Website Key"" and ""Google API Secret Key"" fields are required.","Bitte beachte: Damit reCAPTCHA aktiviert werden kann, müssen die Felder ""Google-API-Website-Key"" und ""Google-API-Secret-Key"" gültige Werte enthalten.",module,Magento_ReCaptchaAdminUi
 "Please perform the AdobeIms reAuth and try again.","Bitte führe die erneute AdobeIms-Authentifizierung durch und versuche es erneut.",module,Magento_AdminAdobeIms
 "Please provide billing address for the order.","Bitte gib eine Rechnungsadresse für die Bestellung an.",module,Magento_Sales
 "Please provide CAPTCHA code and try again","Bitte gib den CAPTCHA-Code ein und versuche es erneut",module,Magento_Checkout
@@ -6821,6 +6861,7 @@ Role,Rolle,module,Magento_Catalog
 "Role Users",Rollen-Benutzer,module,Magento_User
 Roles,Rollen,module,Magento_User
 "Roles Resources",Rollen-Ressourcen,module,Magento_User
+Rollback,Wiederherstellen,module,Magento_Backup
 "Root Category",Root-Kategorie,module,Magento_Backend
 "Root Settings",Grundeinstellungen,module,Magento_PaymentServicesPaypal
 "routing number","Bankleitzahl (Routing Number)",module,PayPal_Braintree
@@ -6866,6 +6907,7 @@ Sales,Umsatz,module,Magento_CheckoutAgreements
 "Sales Tax",Mehrwertsteuer,module,Magento_Reports
 "Sales Total","Verkäufe gesamt",module,Magento_Reports
 "Same As Billing Address","Selbe wie Rechnungsadresse",module,Magento_Sales
+Sample,Muster,module,Magento_Downloadable
 sample,Sample,module,Magento_Downloadable
 "Sample file not found. Please try again.","Beispieldatei nicht gefunden. Bitte versuche es erneut.",module,Magento_Downloadable
 "Sample file not provided","Die Beispieldatei steht nicht zur Verfügung",module,Magento_Downloadable
@@ -6873,6 +6915,7 @@ sample,Sample,module,Magento_Downloadable
 "Sample title cannot be empty.","Sampletitel darf nicht leer bleiben."
 "Sample URL must have valid format.","Sample-URL muss ein ungültiges Format besitzen.",module,Magento_Downloadable
 "Sample URL's domain is not in list of downloadable_domains in env.php.","Die Domain der Beispiel-URL ist nicht in der Liste der downloadable_domains in env.php enthalten.",module,Magento_Downloadable
+Samples,Muster,module,Magento_Downloadable
 Sandbox,Sandkasten,module,Magento_PaymentServicesBase
 "Sandbox API Key",Sandbox-API-Schlüssel,module,Magento_ServicesConnector
 "Sandbox Credentials",Sandbox-Anmeldeinformationen
@@ -7109,6 +7152,7 @@ selected,Ausgewählt,module,Magento_Backend
 "Send me a link via email","Link per E-Mail senden",module,Magento_TwoFactorAuth
 "Send Order Comment Email Copy To","Sende Bestellkommentar-E-Mail in Kopie an",module,Magento_Sales
 "Send Order Comments Email Copy Method","""Sende Bestellkommentar-E-Mail in Kopie""-Methode",module,Magento_Sales
+"Send Order Currency","Bestellwährung übermitteln",module,Magento_GoogleAdwords
 "Send Order Email","Bestellungs-E-Mail senden",module,Magento_Sales
 "Send Order Email Copy Method","""Sende Bestellungs-E-Mail in Kopie""-Methode",module,Magento_Sales
 "Send Order Email Copy To","Sende Bestellungs-E-Mail in Kopie an",module,Magento_Sales
@@ -7546,6 +7590,7 @@ some_label,ein_label,module,Magento_Config
 "Sort Order",Sortierreihenfolge,module,Magento_Backend
 "Sort order must be a positive integer.","Sortierreihenfolge muss eine positive ganze Zahl sein.",module,Magento_Downloadable
 "Sort Order of widget instances in the same container","Sortierung der Widget-Instanzen im selben Container",module,Magento_Widget
+"Sort Order PayPal Credit","Sortierreihenfolge PayPal Credit",module,Magento_Paypal
 "Sort Variations","Variationen sortieren",module,Magento_ConfigurableProduct
 Source,Quelle,module,Magento_InventoryConfigurableProductAdminUi
 "Source %sourceCode does not exist","Quelle %sourceCode existiert nicht",module,Magento_InventoryCatalog
@@ -7619,6 +7664,7 @@ Square,Quadrat,module,Magento_AdobeStockImageAdminUi
 Stacked,Gestapelt,module,Magento_PageBuilder
 "Standard method processes all data in memory. Batch method uses memory-optimized processing for large catalogs.","Die Standardmethode verarbeitet alle Daten im Arbeitsspeicher. Die Stapelmethode verwendet eine speicheroptimierte Verarbeitung für große Kataloge.",module,Magento_Sitemap
 "Standard Overnight","Standard über Nacht-Zustellung",module,Magento_Fedex
+Start,Starten,module,Magento_Newsletter
 "Start Date",Startdatum,module,Magento_Paypal
 "Start date",Startdatum,module,Magento_Customer
 "Start Date&Time","Startdatum & Zeit",module,Magento_ImportExport
@@ -7880,6 +7926,7 @@ Templates,Vorlagen,module,Magento_PageBuilder
 "Temporarily allowed to save HTML value that contains restricted elements. %1","Das Speichern eines HTML-Werts mit gesperrten Elementen ist vorübergehend erlaubt. %1",module,Magento_Cms
 "Temporary (302)","Temporär (302)",module,Magento_UrlRewrite
 "Temporary table does not exist","Temporäre Tabelle existiert nicht",module,Magento_Catalog
+"Terms & Conditions","Allgemeine Geschäftsbedingungen (AGB)",module,Magento_CheckoutAgreements
 "Terms and Conditions","Allgemeine Geschäftsbedingungen (AGB)",module,Magento_CheckoutAgreements
 "Terms and Conditions Information",AGB-Informationen,module,Magento_CheckoutAgreements
 test,Test,module,Magento_Config
@@ -8616,8 +8663,12 @@ text,Text
 "The wrong rule is specified.","Die falsche Regel angegeben.",module,Magento_SalesRule
 "The ZIP Code is invalid. Use numbers only.","Die Postleitzahl ist ungültig. Verwende nur Zahlen.",module,Magento_Tax
 "The ZIP Code length is invalid. Verify that the length is nine characters or fewer and try again.","Die Länge der Postleitzahl ist ungültig. Vergewissere dich, dass die Länge neun Zeichen oder weniger beträgt, und versuche es erneut.",module,Magento_Tax
+"Theme CSS",Theme-CSS,module,Magento_Theme
+"Theme CSS Assets",Theme-CSS-Assets,module,Magento_Theme
 "Theme id should be set","Theme-ID sollte gesetzt sein.",module,Magento_Theme
+"Theme Information",Theme-Informationen,module,Magento_Theme
 "Theme isn't deletable.","Theme ist nicht löschbar.",module,Magento_Theme
+"Theme JavaScript",Theme-JavaScript,module,Magento_Theme
 "Theme layout update file '%1' must not declare page types.","Theme-Layout-Updatedatei ""%1"" darf keine Seitentypen deklarieren."
 "Theme Name",Theme-Name,module,Magento_Backend
 "Theme not found: ""%1"".","Theme nicht gefunden: ""%1"".",module,Magento_Theme
@@ -8856,6 +8907,7 @@ text,Text
 "This Wish List has no Items","Dieser Wunschzettel verfügt über keine Artikel",module,Magento_Wishlist
 "This won't take long . . .","Das wird nicht lange dauern...",module,Magento_Rule
 "Threshold Amount",Grenzbetrag,module,PayPal_Braintree
+Thumbnail,Miniaturbild,module,Magento_Backend
 thumbnail,Vorschaubild,module,Magento_Theme
 "Thumbnail Image",Miniaturbild,module,Magento_AdobeStockImageAdminUi
 "Tier Price",Preisstufen
@@ -8926,6 +8978,8 @@ Together,Zusammen,module,Magento_Bundle
 "Too many coupon code requests, please try again later.","Zu viele Gutschein-Code-Anfragen, bitte versuche es später noch einmal.",module,Magento_SalesRule
 "Too many password reset requests. Please wait and try again or contact %1.","Zu viele Passwortwiederherstellungsanfragen. Bitte warte und probiere es später noch einmal oder kontaktiere %1"
 "Too Many Requests","Zu viele Anfragen",module,Magento_GraphQl
+Tools,Werkzeuge,module,Magento_Backup
+Top,Oben,module,Magento_Paypal
 top,oben,module,PayPal_Braintree
 "Top Aligned","Oben ausgerichtet",module,Magento_PageBuilder
 "Top Center","Oben mittig",module,Magento_PageBuilder
@@ -8977,6 +9031,7 @@ Total:,Insgesamt:,module,Magento_Checkout
 "Track order history","Alte Bestellungen einsehen",module,Magento_Customer
 "Track this shipment","Verfolge diese Sendung",module,Magento_Shipping
 "Track your order","Verfolge deine Bestellung",module,Magento_Shipping
+Track:,Sendungsverfolgung:,module,Magento_Shipping
 "Tracking API Key",Tracking-API-Key,module,Magento_Fedex
 "Tracking API Secret Key",Tracking-API-Secret-Key,module,Magento_Fedex
 "Tracking Information",Tracking-Informationen,module,Magento_Shipping
@@ -8988,6 +9043,7 @@ Total:,Insgesamt:,module,Magento_Checkout
 "Tracking Number(s):",Trackingnummer(n):,module,Magento_Shipping
 "Tracking Number:",Tracking-Nummer:,module,Magento_Shipping
 "Tracking REST URL",Tracking-REST-URL,module,Magento_Ups
+"Tracking XML URL",Tracking-XML-URL,module,Magento_Ups
 "Trailing hyphens are not allowed.","Bindestriche am Ende sind nicht erlaubt.",module,Magento_Ui
 "Transaction # %1 | %2","Transaktion # %1 | %2",module,Magento_Sales
 "Transaction Amount",Transaktionsbetrag,module,PayPal_Braintree
@@ -9254,6 +9310,7 @@ Upload,Hochladen,module,Magento_PageBuilder
 "Uploaded image is not valid","Das hochgeladene Bild ist ungültig"
 "Uploaded Locally","Lokal hochgeladen",module,Magento_MediaGalleryUi
 Uploaded:,Hochgeladen:,module,Magento_ProductVideo
+Uploader:,"Hochgeladen von:",module,Magento_ProductVideo
 "UPS API endpoint URL's must use ups.com","UPS API-Endpunkt-URLs müssen ups.com verwenden",module,Magento_Ups
 "UPS Today Dedicated Courrier","UPS Today Dedicated Courier",module,Magento_Ups
 "UPS Type","UPS Typ",module,Magento_Ups
@@ -9459,6 +9516,7 @@ Vendor,Verkäufer,module,Magento_Paypal
 "Venmo not initialized, please try reloading.","Venmo ist nicht initialisiert, bitte lade die Seite neu.",module,PayPal_Braintree
 "Venmo payment flow cancelled.","Der Venmo-Zahlungsvorgang wurde abgebrochen.",module,PayPal_Braintree
 "Venmo through Braintree","Venmo über Braintree",module,PayPal_Braintree
+"ver. %1","Version %1",module,Magento_Backend
 "Verifier is invalid","Prüfer ist ungültig",module,Magento_Integration
 "Verifier is not the correct length","Prüfer hat nicht die richtige Länge",module,Magento_Integration
 "Verify for Applicable Countries","Für zutreffende Länder verifizieren",module,PayPal_Braintree
@@ -9814,6 +9872,7 @@ Weak,Schwach,module,Magento_Customer
 "Web Site",Website,module,Magento_Backend
 "Web Site Information",Website-Informationen,module,Magento_Backend
 "Web-Services URL (Production)","Web-Services URL (Produktion)",module,Magento_Fedex
+"Web-Services URL (Sandbox)","Web-Services-URL (Sandbox)",module,Magento_Fedex
 "WebAPI Actions",WebAPI-Aktionen,module,Magento_AdobeStockAsset
 "WebApi Challenge Domain",WebAPI-Challenge-Domain,module,Magento_TwoFactorAuth
 "WebapiAsync config for ""%lookupKey"" does not exist.","Die WebapiAsync-Konfiguration für ""%lookupKey"" existiert nicht.",module,Magento_WebapiAsync
@@ -9921,7 +9980,9 @@ WK,Woche,module,Magento_Backend
 "Wrong transaction status","Falscher Transaktionsstatus",module,PayPal_Braintree
 "Wrong type specified: '%1'","Falscher Typ angegeben: '%1'",module,Magento_Deploy
 "Wrong value %value for alias","Falscher Wert %value für Alias",module,Magento_InventoryMultiDimensionalIndexerApi
+"WYSIWYG Editor",WYSIWYG-Editor,module,Magento_Catalog
 "WYSIWYG Options",WYSIWYG-Optionen,module,Magento_Cms
+"XML Sitemap",XML-Sitemap,module,Magento_Sitemap
 "XML Sitemap Section","Abschnitt XML Sitemap",module,Magento_Sitemap
 "XMP data is corrupted","Die XMP-Daten sind beschädigt",module,Magento_MediaGalleryMetadata
 Year,Jahr,module,Magento_Catalog
