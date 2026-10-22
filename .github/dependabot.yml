@@ -1,0 +1,14 @@
+version: 2
+
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: cron
+      timezone: Europe/Berlin
+      cronjob: '0 1 12 * *'
+    open-pull-requests-limit: 15
+    assignees:
+      - klein0r
+    cooldown:
+      default-days: 7
