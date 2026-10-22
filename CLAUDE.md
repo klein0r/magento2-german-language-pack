@@ -45,7 +45,10 @@ Do not include:
 
 ### Language and style
 
-- Always use the formal "Sie", both in the storefront and in the admin. Never use "du".
+- Always address the user informally with "du", both in the storefront and in the admin. Never use the formal "Sie".
+  - Write "du", "dein", "dir", "dich" in lowercase, except at the start of a sentence.
+  - Imperatives in the singular "du" form, with the "-e" ending where common: „Gib … ein“, „Wähle …“, „Klicke …“, „Versuche es erneut“, „Wende dich an …“.
+  - "Sie"/"sie" meaning "they" or "it" (e.g. „Sie ist entweder zu alt …“) is not a form of address and stays.
 - Natural German rather than literal translation. Error messages as full sentences: „Das Produkt mit der SKU "%1" existiert nicht."
 - `Please …` becomes „Bitte …", `Something went wrong` becomes „Ein Fehler ist aufgetreten" or „Beim … ist ein Fehler aufgetreten", not „Etwas ist schiefgelaufen".
 - Numbers and units in German notation when in running text: `21,9 %`, `1.200 £`. CSS values and example values (`50px`, `0.0 bis 1.0` as input format) stay unchanged.
@@ -131,6 +134,7 @@ After every change to `de_DE.csv`:
 - Placeholders and HTML tags are identical in key and translation.
 - No translation is identical to its key.
 - No translation contains line breaks if the key contains none.
+- No translation uses the formal address (`Sie`, `Ihr…`, `Ihnen` as a form of address).
 - No existing English key was changed unintentionally (compare the set of keys before and after).
 - For multi-line or unusual keys: check against the runtime string, e.g. via `Magento\Config\Model\Config\Structure\Data` for `system.xml` texts.
 
