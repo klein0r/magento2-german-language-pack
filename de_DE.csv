@@ -1403,7 +1403,7 @@
 "BI Essentials","BI Grundlagen",module,Magento_Analytics
 "Bicycling","Radfahren",module,Magento_InventoryDistanceBasedSourceSelectionAdminUi
 "Big Image","Großes Bild",module,Magento_Backend
-"Bill-to Name","Rechnung an Name",module,Magento_Customer
+"Bill-to Name","Rechnung an (Name)",module,Magento_Customer
 "Billing","Abrechnung",module,Magento_Sales
 "Billing Address","Rechnungsadresse",module,Magento_Customer
 "Billing address is not defined for instance purchase.","Die Rechnungsadresse ist für Sofortkauf nicht definiert.",module,Magento_InstantPurchase
@@ -2008,8 +2008,8 @@
 "Confirmation Required","Bestätigung erforderlich",module,Magento_Customer
 "ConfirmCancelOrderInput is missing.","ConfirmCancelOrderInput fehlt.",module,Magento_OrderCancellationGraphQl
 "Confirmed","Bestätigt",module,Magento_Customer
-"Confirmed email","Bestätigte E-Mail",module,Magento_Customer
-"Confirmed email:","Bestätigte E-Mail:",module,Magento_Customer
+"Confirmed email","E-Mail bestätigt",module,Magento_Customer
+"Confirmed email:","E-Mail bestätigt:",module,Magento_Customer
 "Connect Different PayPal Account","Anderes PayPal-Konto verbinden",module,Magento_PaymentServicesPaypal
 "Connect to different account","Mit anderem Konto verbinden",module,Magento_PaymentServicesPaypal
 "Connect your merchant account with a fully customizable gateway that lets customers pay without leaving your site. (<u>Includes Express Checkout</u>)","Verbinde dein Händler-Konto mit einem voll anpassbaren Gateway, um die Kunden zahlen lassen zu können, ohne deine Website zu verlassen. (<u>Beinhaltet Express Checkout</u>)",module,Magento_Paypal
@@ -2865,7 +2865,7 @@
 "Displays Pay Later messaging for available offers. Restrictions apply. <a href=""https://developer.paypal.com/docs/business/pay-later/us/"" target=""_blank"">Learn more</a>","Zeigt ""Später bezahlen""-Nachrichten für verfügbare Angebote an. Es gelten Einschränkungen. <a href=""https://developer.paypal.com/docs/business/pay-later/us/"" target=""_blank"">Mehr erfahren</a>",module,Magento_PaymentServicesPaypal
 "Dispute","Streit",module,Magento_Paypal
 "Dispute ID: %1. Status: %2","Dispute-ID: %1. Status: %2",module,PayPal_Braintree
-"Dispute State","Dispute-Status",module,PayPal_Braintree
+"Dispute State","Streitigkeits-Status",module,PayPal_Braintree
 "Distance","Entfernung",module,Magento_InventoryDistanceBasedSourceSelectionAdminUi
 "Distance Priority","Entfernungspriorität",module,Magento_InventoryDistanceBasedSourceSelection
 "Distance Provider for Distance Based SSA","Fernanbieter für entfernungsbasierte SSA",module,Magento_InventoryDistanceBasedSourceSelectionAdminUi
@@ -4105,7 +4105,7 @@
 "Integrations API Configuration","Integrations-API-Konfiguration",module,Magento_Integration
 "Integrations API configuration file","Integrations-API-Konfigurationsdatei",module,Magento_Integration
 "Integrations Configuration","Integrations-Konfiguration",module,Magento_Integration
-"Interface Locale","Schnittstelle Sprachumgebung",module,Magento_Backend
+"Interface Locale","Sprache der Benutzeroberfläche",module,Magento_Backend
 "Internal error accessing 2FA index page","Interner Fehler beim Zugriff auf die 2FA-Indexseite",module,Magento_TwoFactorAuth
 "Internal error. Check exception log for details.","Interner Fehler. Überprüfe das Ausnahmeprotokoll für Details.",module,Magento_Integration
 "Internal Error. Details are available in Magento log file. Report ID: %1","Interner Fehler. Details befinden sich in der Magento-Logfile. Report-ID: %1"
@@ -4364,7 +4364,7 @@
 "It seems that you'd like to cancel your order #%order_id. If this is correct, please <a href=""%guest_order_url"" target=""_blank"">click here</a> to confirm your cancellation request.","Du möchtest offenbar deine Bestellung #%order_id stornieren. Wenn das zutrifft, <a href=""%guest_order_url"" target=""_blank"">klicke bitte hier</a>, um deine Stornierungsanfrage zu bestätigen.",module,Magento_OrderCancellation
 "It's a default billing address.","Ist die Standard-Rechnungsadresse.",module,Magento_Customer
 "It's a default shipping address.","Ist die Standard-Lieferadresse.",module,Magento_Customer
-"It's time to <a href=""%1"">change your password</a>.","Es ist Zeit, um dein <a href=""%1"">Passwort zu ändern</a>.",module,Magento_User
+"It's time to <a href=""%1"">change your password</a>.","Es ist Zeit, dein <a href=""%1"">Passwort zu ändern</a>.",module,Magento_User
 "It's time to change your password.","Es ist Zeit, dein Passwort zu ändern.",module,Magento_User
 "Item","Artikel",module,Magento_Checkout
 "item","Artikel",module,Magento_LayeredNavigation
@@ -6879,10 +6879,10 @@
 "Search Suggestions Count","Anzahl der Suchvorschläge",module,Magento_AdvancedSearch
 "Search Synonyms","Synonyme",module,Magento_Search
 "Search synonyms are not supported by the %1 search engine. Any synonyms you enter won't be used.","Suchsynonyme werden von der %1 Suchmaschine nicht unterstützt. Jedes Synonym, das du eingibst, wird nicht benutzt.",module,Magento_Search
-"Search Term","Suchbegriffe-Bericht",module,Magento_Search
+"Search Term","Suchbegriffe",module,Magento_Search
 "Search term is empty","Suchbegriff ist leer",module,Magento_CatalogSearch
 "Search Terms","Suchbegriffe",module,Magento_Search
-"Search Terms Report","Suchbegriffe-Bericht",module,Magento_Search
+"Search Terms Report","Suchbegriff-Bericht",module,Magento_Search
 "Search Weight","Gewichtung in der Suche",module,Magento_CatalogSearch
 "Search with postcode or city name...","Mit Postleitzahl oder Ort suchen...",module,Magento_InventoryInStorePickupFrontend
 "Searchable","Suchbar",module,Magento_Catalog
@@ -6970,7 +6970,7 @@
 "Select your preferred payments experience","Wähle dein bevorzugtes Zahlungserlebnis",module,Magento_PaymentServicesPaypal
 "Select...","Auswählen...",module,Magento_Catalog
 "Selected","Ausgewählt",module,Magento_InventoryInStorePickupFrontend
-"selected","Ausgewählt",module,Magento_Backend
+"selected","ausgewählt",module,Magento_Backend
 "Selected algorithm will define JWT type used (JWS or JWE)","Der ausgewählte Algorithmus bestimmt den verwendeten JWT-Typ (JWS oder JWE)",module,Magento_JwtUserToken
 "Selected allowed currency ""%1"" is not available in installed currencies.","Ausgewählte erlaubte Währung ""%1"" ist nicht in den installierten Währungen verfügbar.",module,Magento_Config
 "Selected Attributes:","Ausgewählte Attribute:",module,Magento_ConfigurableProduct
